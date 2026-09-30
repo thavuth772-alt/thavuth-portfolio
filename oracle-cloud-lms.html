@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Oracle Cloud LMS</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#172033}
+.hidden{display:none!important}.top{background:linear-gradient(135deg,#1d4ed8,#4f46e5);color:white;padding:28px 20px}
+.wrap{max-width:1050px;margin:auto}h1,h2,h3{margin-top:0}.card{background:white;border-radius:16px;padding:25px;box-shadow:0 8px 30px #00000012;margin:20px 0}
+input{width:100%;padding:13px;border:1px solid #cbd5e1;border-radius:9px;font-size:15px;margin:7px 0 17px}
+button{border:0;border-radius:9px;padding:12px 18px;background:#4f46e5;color:white;font-weight:bold;cursor:pointer}button.secondary{background:#e2e8f0;color:#172033}button:disabled{opacity:.6}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}.activity{border:1px solid #dbe3ef;border-radius:13px;padding:18px;background:#fff}.activity h3{font-size:18px}.activity p{color:#64748b;min-height:40px}
+.progress{height:10px;background:#e2e8f0;border-radius:20px;overflow:hidden;margin:10px 0 20px}.bar{height:100%;background:#4f46e5;width:0}
+.option{display:block;padding:13px;margin:9px 0;border:1px solid #dbe3ef;border-radius:9px;cursor:pointer}.option:hover{background:#f8fafc}
+.option input{width:auto;margin:0 8px 0 0}.qno{color:#64748b;font-weight:bold}.result{text-align:center;padding:30px}.score{font-size:44px;font-weight:bold;color:#4f46e5}
+.small{color:#64748b;font-size:14px}.status{font-weight:bold;color:#166534}
+
+.usecase-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
+.usecase{background:#fff;border:1px solid #dbe3ef;border-radius:14px;padding:20px;box-shadow:0 5px 18px #0000000a}
+.usecase h3{font-size:18px;margin-bottom:10px;color:#172033}
+.usecase .goal{color:#475569;line-height:1.55}
+.usecase details{margin-top:15px}
+.usecase summary{cursor:pointer;background:#eef2ff;color:#3730a3;padding:11px;border-radius:8px;font-weight:bold}
+.usecase ol{padding-left:22px;line-height:1.65;color:#334155}
+.usecase li{margin:7px 0}
+.practical-btn{margin-top:12px;background:#0f766e}
+.practical-btn:hover{background:#0d6258}
+
+@media(max-width:800px){.usecase-grid{grid-template-columns:1fr}}\n@media(max-width:600px){.top{padding:22px 15px}.card{padding:18px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><h1>Oracle Cloud Learning Management System</h1><div id="studentHeader" class="small" style="color:#dbeafe"></div></div></header>
+
+<main class="wrap">
+<section id="login" class="card">
+<h2>Student Login</h2>
+<p class="small">All students use the same LMS. Enter your name and college name to identify your learning records.</p>
+<label>Student Name *</label><input id="studentName" required placeholder="Enter your full name">
+<label>College Name *</label><input id="collegeName" required placeholder="Enter your college name">
+<button onclick="startLMS()">Start LMS</button>
+</section>
+
+<section id="dashboard" class="hidden">
+<div class="card"><h2>Student Dashboard</h2><p id="welcome"></p><div class="progress"><div id="overallBar" class="bar"></div></div><p id="overallText" class="small"></p></div>
+<div class="grid" id="activities"></div><div class="card"><button class="practical-btn" onclick="showUseCases()">OCI Practical Use Cases</button></div>
+</section>
+
+
+<section id="usecases" class="hidden">
+  <div class="card">
+    <h2>OCI Practical Use Cases</h2>
+    <p class="small">Students can practice these simple Oracle Cloud tasks after learning the related concept. Menu names can vary slightly depending on the OCI Console layout and tenancy configuration.</p>
+  </div>
+  <div class="usecase-grid">
+    
+<article class="usecase">
+  <h3>Use Case 1: Create an OCI Compute VM</h3>
+  <p class="goal"><strong>Goal:</strong> Run a simple web server on an Oracle Cloud virtual machine.</p>
+  <details>
+    <summary>View step-by-step instructions</summary>
+    <ol><li>Sign in to the OCI Console.</li><li>Open Compute → Instances.</li><li>Select the correct Compartment and click Create instance.</li><li>Enter an instance name and choose an available image such as Oracle Linux.</li><li>Choose a suitable VM shape.</li><li>Select or create a VCN and subnet.</li><li>Review the configuration and click Create.</li><li>Wait until the instance reaches Running state.</li><li>Open the instance details and note its public IP address.</li><li>Use SSH from your computer to connect to the VM and install your application.</li></ol>
+  </details>
+</article>
+
+<article class="usecase">
+  <h3>Use Case 2: Create an Object Storage Bucket</h3>
+  <p class="goal"><strong>Goal:</strong> Store student project files, images, or backup files in OCI Object Storage.</p>
+  <details>
+    <summary>View step-by-step instructions</summary>
+    <ol><li>Sign in to the OCI Console.</li><li>Open Storage → Object Storage & Archive Storage → Buckets.</li><li>Select the required Compartment.</li><li>Click Create Bucket.</li><li>Enter a bucket name and choose the required storage tier.</li><li>Keep the bucket private unless public access is specifically required.</li><li>Click Create.</li><li>Open the bucket and select Upload.</li><li>Choose a file from your computer and upload it.</li><li>Open the object to verify that the file was uploaded successfully.</li></ol>
+  </details>
+</article>
+
+<article class="usecase">
+  <h3>Use Case 3: Attach Block Volume to a VM</h3>
+  <p class="goal"><strong>Goal:</strong> Add additional persistent disk storage to a Compute instance.</p>
+  <details>
+    <summary>View step-by-step instructions</summary>
+    <ol><li>Open Storage → Block Storage → Block Volumes.</li><li>Select the required Compartment.</li><li>Click Create Block Volume.</li><li>Enter a volume name and choose the required size.</li><li>Create the volume and wait for it to become Available.</li><li>Open the volume and choose Attach to Compute Instance.</li><li>Select the target Compute instance.</li><li>Choose the appropriate attachment type and confirm.</li><li>Connect to the instance and identify the attached disk.</li><li>Format and mount the disk only if the operating system requires it.</li></ol>
+  </details>
+</article>
+
+<article class="usecase">
+  <h3>Use Case 4: Create a VCN</h3>
+  <p class="goal"><strong>Goal:</strong> Create an isolated network for cloud resources.</p>
+  <details>
+    <summary>View step-by-step instructions</summary>
+    <ol><li>Open Networking → Virtual Cloud Networks.</li><li>Select the required Compartment.</li><li>Click Start VCN Wizard or Create VCN.</li><li>Enter a VCN name and choose an IPv4 CIDR block.</li><li>Create a subnet for your resources.</li><li>Configure an Internet Gateway if internet connectivity is required.</li><li>Review the route table and security rules.</li><li>Create the VCN.</li><li>Open the VCN and verify the VCN, subnet, route table, and gateway resources.</li><li>Use the VCN when launching Compute resources.</li></ol>
+  </details>
+</article>
+
+<article class="usecase">
+  <h3>Use Case 5: Create an IAM Group and Policy</h3>
+  <p class="goal"><strong>Goal:</strong> Give a team controlled access to OCI resources.</p>
+  <details>
+    <summary>View step-by-step instructions</summary>
+    <ol><li>Open Identity & Security → Domains or Identity & Security → Policies, depending on your tenancy configuration.</li><li>Create an IAM group for the required users if it does not already exist.</li><li>Add the required users to the group.</li><li>Open Policies and select the required Compartment.</li><li>Create a policy with only the permissions needed for the training activity.</li><li>Review the policy statements carefully before saving.</li><li>Sign in as a test user or use an appropriate test account.</li><li>Verify that the user can perform the intended action.</li><li>Verify that unnecessary actions are not permitted.</li></ol>
+  </details>
+</article>
+
+<article class="usecase">
+  <h3>Use Case 6: Deploy a Simple Web Application on Compute</h3>
+  <p class="goal"><strong>Goal:</strong> Host a basic HTML website on an OCI Compute instance.</p>
+  <details>
+    <summary>View step-by-step instructions</summary>
+    <ol><li>Create or use a running Linux Compute instance.</li><li>Connect to the instance using SSH.</li><li>Install a web server such as Apache HTTP Server or Nginx.</li><li>Create a simple index.html page.</li><li>Place the page in the web server's document directory.</li><li>Allow the required HTTP port in the instance network security rules.</li><li>Allow the same port in the operating system firewall when required.</li><li>Start the web server.</li><li>Open the instance public IP address in a browser.</li><li>Verify that the HTML page is displayed.</li></ol>
+  </details>
+</article>
+
+<article class="usecase">
+  <h3>Use Case 7: Create an Autonomous Database</h3>
+  <p class="goal"><strong>Goal:</strong> Create a managed Oracle database for a student application.</p>
+  <details>
+    <summary>View step-by-step instructions</summary>
+    <ol><li>Open Oracle Database → Autonomous AI Database or the database service available in your tenancy.</li><li>Select the required Compartment.</li><li>Click Create.</li><li>Enter the database display name and administrator credentials.</li><li>Choose the required workload and compute/storage configuration.</li><li>Review networking and access settings.</li><li>Create the database.</li><li>Wait until the database becomes Available.</li><li>Open the database details and use the available database tools or connection information.</li><li>Create a sample table and insert a small amount of test data.</li></ol>
+  </details>
+</article>
+
+<article class="usecase">
+  <h3>Use Case 8: Store a Backup in Object Storage</h3>
+  <p class="goal"><strong>Goal:</strong> Create a simple cloud backup workflow for project files.</p>
+  <details>
+    <summary>View step-by-step instructions</summary>
+    <ol><li>Create an Object Storage bucket.</li><li>Collect the project files that need to be backed up.</li><li>Open the bucket and click Upload.</li><li>Upload the project files or backup archive.</li><li>Create folders using object prefixes if you want logical organization.</li><li>Verify the uploaded objects.</li><li>Use lifecycle rules when you need automatic movement or deletion of older objects.</li><li>Keep the bucket private unless a documented public-access requirement exists.</li><li>Periodically verify that important backup objects are available.</li></ol>
+  </details>
+</article>
+
+<article class="usecase">
+  <h3>Use Case 9: Create a Kubernetes Cluster</h3>
+  <p class="goal"><strong>Goal:</strong> Deploy a basic containerized application using OCI Container Engine for Kubernetes.</p>
+  <details>
+    <summary>View step-by-step instructions</summary>
+    <ol><li>Open Developer Services → Kubernetes Clusters (OKE).</li><li>Select the required Compartment.</li><li>Click Create Cluster.</li><li>Choose the Quick Create option for a simple training setup when available.</li><li>Select the required Kubernetes version and networking configuration.</li><li>Configure the worker node pool with a suitable shape and number of nodes.</li><li>Create the cluster and wait for it to become Active.</li><li>Connect to the cluster using the provided kubeconfig instructions.</li><li>Deploy a simple container image using a Kubernetes Deployment.</li><li>Expose the application using an appropriate Kubernetes Service and test it.</li></ol>
+  </details>
+</article>
+
+<article class="usecase">
+  <h3>Use Case 10: Create a Monitoring Alarm</h3>
+  <p class="goal"><strong>Goal:</strong> Monitor a cloud resource and create an alert when a metric crosses a threshold.</p>
+  <details>
+    <summary>View step-by-step instructions</summary>
+    <ol><li>Open Observability & Management → Monitoring.</li><li>Choose the required metric or open the Alarms section.</li><li>Click Create Alarm.</li><li>Select the target compartment and monitored resource.</li><li>Choose a metric such as CPU utilization when available for the selected resource.</li><li>Set a threshold and evaluation period suitable for the training exercise.</li><li>Configure a notification destination if required.</li><li>Save the alarm.</li><li>Generate or wait for a condition that crosses the configured threshold.</li><li>Check the alarm state and notification to verify the setup.</li></ol>
+  </details>
+</article>
+  </div>
+  
+<article class="usecase">
+  <h3>Use Case 11: Create an OCI Load Balancer</h3>
+  <p class="goal"><strong>Goal:</strong> Distribute incoming web traffic across multiple backend servers.</p>
+  <details>
+    <summary>View step-by-step instructions</summary>
+    <ol><li>Open Networking → Load Balancers.</li><li>Select the required Compartment.</li><li>Click Create Load Balancer.</li><li>Enter a load balancer name and choose the required shape.</li><li>Select the VCN and public or private subnet as appropriate.</li><li>Create or select a backend set.</li><li>Add one or more Compute instances as backend servers.</li><li>Configure the listener for HTTP or HTTPS on the required port.</li><li>Create the load balancer and wait until it becomes Active.</li><li>Open the load balancer IP address and verify that traffic reaches the backend application.</li></ol>
+  </details>
+</article>
+
+<article class="usecase">
+  <h3>Use Case 12: Create a Bastion Session</h3>
+  <p class="goal"><strong>Goal:</strong> Provide controlled SSH access to a private Compute instance without giving the instance a public IP.</p>
+  <details>
+    <summary>View step-by-step instructions</summary>
+    <ol><li>Open Identity & Security → Bastion.</li><li>Select the required Compartment.</li><li>Create a Bastion and select the VCN.</li><li>Choose the subnet where the Bastion will be created.</li><li>Wait until the Bastion becomes Active.</li><li>Create a session and select the target Compute instance.</li><li>Choose SSH as the session type.</li><li>Provide the required SSH public key.</li><li>Create the session and use the generated connection command.</li><li>Connect to the private instance and verify access.</li></ol>
+  </details>
+</article>
+
+<article class="usecase">
+  <h3>Use Case 13: Create OCI File Storage</h3>
+  <p class="goal"><strong>Goal:</strong> Create shared file storage that can be mounted by Compute instances.</p>
+  <details>
+    <summary>View step-by-step instructions</summary>
+    <ol><li>Open Storage → File Storage.</li><li>Select the required Compartment.</li><li>Create a file system.</li><li>Choose the required Availability Domain and compartment.</li><li>Create a mount target in the required VCN and subnet.</li><li>Wait for the file system and mount target to become available.</li><li>Open the mount target details and note the mount information.</li><li>Connect to a Linux Compute instance in the network.</li><li>Install the required NFS client packages when needed.</li><li>Mount the file system and create a test file to verify shared storage.</li></ol>
+  </details>
+</article>
+
+<article class="usecase">
+  <h3>Use Case 14: Create an OCI Function</h3>
+  <p class="goal"><strong>Goal:</strong> Run a small piece of code without managing a traditional server.</p>
+  <details>
+    <summary>View step-by-step instructions</summary>
+    <ol><li>Open Developer Services → Functions.</li><li>Create or select an application.</li><li>Choose the required Compartment and subnet configuration.</li><li>Select a compatible Functions environment.</li><li>Create a function.</li><li>Choose a runtime such as Python or another supported runtime.</li><li>Add simple code that returns a response such as Hello from OCI Functions.</li><li>Deploy the function.</li><li>Invoke or test the function using the OCI Console.</li><li>Verify that the function returns the expected response.</li></ol>
+  </details>
+</article>
+
+<article class="usecase">
+  <h3>Use Case 15: Create an API Gateway</h3>
+  <p class="goal"><strong>Goal:</strong> Expose a backend application or function through a managed API endpoint.</p>
+  <details>
+    <summary>View step-by-step instructions</summary>
+    <ol><li>Open Developer Services → API Management → Gateways.</li><li>Select the required Compartment.</li><li>Create an API Gateway.</li><li>Select the required VCN and subnet.</li><li>Wait until the gateway becomes Active.</li><li>Create an API deployment.</li><li>Add a route such as /hello.</li><li>Connect the route to an OCI Function or suitable backend.</li><li>Deploy the API configuration.</li><li>Copy the endpoint URL and test the API using a browser or API client.</li></ol>
+  </details>
+</article>
+
+<article class="usecase">
+  <h3>Use Case 16: Create a DNS Zone</h3>
+  <p class="goal"><strong>Goal:</strong> Map a domain name to an IP address or other DNS target.</p>
+  <details>
+    <summary>View step-by-step instructions</summary>
+    <ol><li>Open Networking → DNS Management.</li><li>Select the required Compartment.</li><li>Create a zone and enter your domain name.</li><li>Choose the appropriate zone type for your training requirement.</li><li>Open the zone and create the required DNS record.</li><li>For a simple website, create an A record pointing to the required public IP address.</li><li>Save the record.</li><li>Check the zone's nameserver information.</li><li>Update the domain registrar nameservers when using a real domain.</li><li>Test the domain name after DNS propagation.</li></ol>
+  </details>
+</article>
+
+<article class="usecase">
+  <h3>Use Case 17: Send a Notification with OCI Notifications</h3>
+  <p class="goal"><strong>Goal:</strong> Send an email notification when an OCI event or alarm occurs.</p>
+  <details>
+    <summary>View step-by-step instructions</summary>
+    <ol><li>Open Developer Services → Notifications.</li><li>Create a notification topic in the required Compartment.</li><li>Open the topic and create a subscription.</li><li>Choose Email as the protocol when available.</li><li>Enter the recipient email address.</li><li>Confirm the subscription from the email received by the subscriber.</li><li>Create or use an OCI alarm or event that can publish to the topic.</li><li>Configure the alarm or rule to use the notification topic.</li><li>Trigger a test condition when appropriate.</li><li>Verify that the notification is delivered.</li></ol>
+  </details>
+</article>
+
+<article class="usecase">
+  <h3>Use Case 18: View OCI Logs</h3>
+  <p class="goal"><strong>Goal:</strong> Collect and inspect application or service logs for troubleshooting.</p>
+  <details>
+    <summary>View step-by-step instructions</summary>
+    <ol><li>Open Observability & Management → Logging.</li><li>Select the required Compartment.</li><li>Create or open a Log Group.</li><li>Create a log and select the appropriate log source.</li><li>Configure the required retention and collection settings.</li><li>Generate some application or service activity.</li><li>Open the log and view recent log entries.</li><li>Use filters to search for a keyword, severity, or time range.</li><li>Inspect the log details to identify useful troubleshooting information.</li><li>Use the findings to investigate the related application or infrastructure issue.</li></ol>
+  </details>
+</article>
+
+<article class="usecase">
+  <h3>Use Case 19: Create a Private Compute Application</h3>
+  <p class="goal"><strong>Goal:</strong> Run a backend application on a private subnet without exposing the Compute instance directly to the internet.</p>
+  <details>
+    <summary>View step-by-step instructions</summary>
+    <ol><li>Create or use an OCI VCN with a private subnet.</li><li>Launch a Compute instance into the private subnet.</li><li>Configure security rules for only the required application traffic.</li><li>Use a Bastion or another approved private-access method for administration.</li><li>Install the backend application on the Compute instance.</li><li>Configure the application to listen on the required private port.</li><li>If the application needs outbound internet access, configure the appropriate gateway and routing.</li><li>Place a Load Balancer or API Gateway in front of the backend when external access is required.</li><li>Test the application through the intended frontend endpoint.</li><li>Verify that the backend instance itself does not need a public IP for the application flow.</li></ol>
+  </details>
+</article>
+
+<article class="usecase">
+  <h3>Use Case 20: Create a Simple Cloud Cost Monitoring Routine</h3>
+  <p class="goal"><strong>Goal:</strong> Review cloud resource usage and identify resources that are no longer required.</p>
+  <details>
+    <summary>View step-by-step instructions</summary>
+    <ol><li>Open the OCI Console and review the resources created for your training compartment.</li><li>Check Compute instances and identify resources that are no longer being used.</li><li>Review Block Volumes, Object Storage, databases, load balancers, and other training resources.</li><li>Open the Billing & Cost Management area available in your tenancy.</li><li>Review usage and cost information for the relevant period.</li><li>Identify unused or unnecessary resources.</li><li>Stop or terminate training resources only when you are sure they are no longer needed.</li><li>Remove temporary storage and other test resources according to your training plan.</li><li>Record the resources that remain active.</li><li>Repeat this review after practical sessions to keep the training environment organized.</li></ol>
+  </details>
+</article>
+  <div class="card" style="margin-top:20px">
+    <button class="secondary" onclick="backDashboard()">Back to Dashboard</button>
+  </div>
+</section>
+
+<section id="quiz" class="hidden">
+<div class="card">
+<p class="qno" id="activityTitle"></p><div class="progress"><div id="quizBar" class="bar"></div></div>
+<h2 id="questionText"></h2><div id="options"></div>
+<div style="display:flex;justify-content:space-between;margin-top:20px"><button class="secondary" onclick="backDashboard()">Dashboard</button><button id="nextBtn" onclick="nextQuestion()">Next</button></div>
+</div>
+</section>
+
+<section id="result" class="hidden">
+<div class="card result"><h2 id="resultTitle"></h2><div class="score" id="score"></div><p id="resultDetails"></p><p id="saveStatus" class="status"></p><button onclick="backDashboard()">Back to Dashboard</button></div>
+</section>
+</main>
+
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzEyWtr36naCHJb-gtcTUnySjlO7CGkBERlfejY4Lt8jMHTeFuPQxyIF5UcrjYH0Wx3-g/exec";
+const activities = [{"title": "OCI Fundamentals", "questions": [{"q": "What does OCI stand for?", "options": ["Oracle Cloud Infrastructure", "Oracle Compute Integration", "Oracle Cloud Internet", "Oracle Container Infrastructure"], "answer": 0}, {"q": "Which OCI resource provides an isolated virtual network?", "options": ["Object Storage", "VCN", "Vault", "Monitoring"], "answer": 1}, {"q": "Which service provides virtual machines and bare metal compute?", "options": ["Compute", "Object Storage", "Functions", "Logging"], "answer": 0}, {"q": "Which service stores unstructured data as objects?", "options": ["Block Volume", "Object Storage", "File Storage", "Database"], "answer": 1}, {"q": "Which service manages encryption keys and secrets?", "options": ["Vault", "Compute", "Load Balancer", "Monitoring"], "answer": 0}]}, {"title": "IAM", "questions": [{"q": "What does OCI IAM primarily manage?", "options": ["Identity and access", "Object storage", "CPU capacity", "DNS zones"], "answer": 0}, {"q": "What is an IAM group?", "options": ["A collection of users", "A network subnet", "A storage bucket", "A compute shape"], "answer": 0}, {"q": "What does an IAM policy define?", "options": ["Who can access resources and what actions are allowed", "How much storage is available", "How fast a VM runs", "How DNS resolves"], "answer": 0}, {"q": "What is least privilege?", "options": ["Granting only the permissions needed", "Granting administrator access to everyone", "Removing all policies", "Allowing anonymous access"], "answer": 0}, {"q": "What can a compartment help with?", "options": ["Organizing resources and scoping access", "Increasing CPU speed", "Storing videos", "Replacing a VCN"], "answer": 0}]}, {"title": "Compute", "questions": [{"q": "Which OCI service provides compute instances?", "options": ["Compute", "Vault", "Object Storage", "Logging"], "answer": 0}, {"q": "What is a compute shape?", "options": ["A configuration describing resources such as CPU and memory", "A network security list", "A storage bucket", "A DNS record"], "answer": 0}, {"q": "What is a boot volume used for?", "options": ["Storing the operating system and boot information", "Distributing traffic", "Managing keys", "Collecting metrics"], "answer": 0}, {"q": "What is a virtual machine?", "options": ["A virtualized computer running on physical infrastructure", "A storage bucket", "A policy", "A subnet"], "answer": 0}, {"q": "What can autoscaling help with?", "options": ["Adjusting compute capacity based on demand or rules", "Encrypting secrets", "Creating object buckets", "Resolving domain names"], "answer": 0}]}, {"title": "VCN & Networking", "questions": [{"q": "What does a VCN provide?", "options": ["An isolated virtual network in OCI", "A database engine", "A certificate", "A file editor"], "answer": 0}, {"q": "What is a subnet?", "options": ["A subdivision of a VCN", "A storage object", "An IAM user", "A compute shape"], "answer": 0}, {"q": "What is a route table used for?", "options": ["Defining routing rules for network traffic", "Storing images", "Managing passwords", "Creating users"], "answer": 0}, {"q": "What is an Internet Gateway used for?", "options": ["Providing a path between a VCN and the internet for permitted traffic", "Storing objects", "Managing keys", "Running containers"], "answer": 0}, {"q": "What is a security list?", "options": ["A set of ingress and egress rules", "A storage policy", "A database table", "A compute image"], "answer": 0}]}, {"title": "Object Storage", "questions": [{"q": "What type of data is Object Storage designed to store?", "options": ["Unstructured object data", "CPU instructions only", "IAM users", "VCN routes"], "answer": 0}, {"q": "What is a bucket?", "options": ["A logical container for objects", "A compute instance", "A subnet", "A policy statement"], "answer": 0}, {"q": "Which tier is intended for frequently accessed data?", "options": ["Standard", "Archive", "Compute", "Vault"], "answer": 0}, {"q": "What is lifecycle management used for?", "options": ["Automatically moving or deleting objects according to rules", "Running containers", "Creating policies", "Assigning IP addresses"], "answer": 0}, {"q": "What can object versioning help with?", "options": ["Keeping previous versions of objects", "Increasing CPU cores", "Creating subnets", "Changing DNS"], "answer": 0}]}, {"title": "Block Volume", "questions": [{"q": "What is OCI Block Volume?", "options": ["Persistent block storage for compute workloads", "An IAM service", "A DNS service", "A monitoring dashboard"], "answer": 0}, {"q": "How can a block volume commonly be used?", "options": ["Attached to a compute instance as a block device", "Used as an IAM policy", "Used as a DNS zone", "Used as a subnet"], "answer": 0}, {"q": "What is a volume backup?", "options": ["A point-in-time backup of volume data", "A network route", "A user account", "A compute shape"], "answer": 0}, {"q": "What is a boot volume?", "options": ["Storage containing the operating system used to boot an instance", "An IAM policy", "A traffic distributor", "A DNS resolver"], "answer": 0}, {"q": "Which workload can benefit from block storage?", "options": ["Databases and applications needing persistent disk-like storage", "DNS resolution only", "IAM authentication only", "Network routing only"], "answer": 0}]}, {"title": "Databases", "questions": [{"q": "What is a database service used for?", "options": ["Storing and managing application data", "Creating VCN routes only", "Managing passwords only", "Distributing traffic only"], "answer": 0}, {"q": "What is a relational database?", "options": ["A database that organizes data into related tables", "A network gateway", "A storage bucket", "A container image"], "answer": 0}, {"q": "What does SQL commonly provide?", "options": ["A language for querying and managing relational data", "A VCN protocol", "A VM shape", "A monitoring metric"], "answer": 0}, {"q": "What is a database backup used for?", "options": ["Recovering database data after loss or failure", "Creating public IPs", "Managing IAM groups", "Routing traffic"], "answer": 0}, {"q": "What is a database endpoint?", "options": ["A network address through which clients connect to a database", "An IAM policy", "A storage bucket", "A compute image"], "answer": 0}]}, {"title": "Containers", "questions": [{"q": "What is a container?", "options": ["A packaged environment containing an application and its dependencies", "A subnet", "A storage bucket", "An IAM policy"], "answer": 0}, {"q": "What is Kubernetes?", "options": ["A platform for orchestrating containerized workloads", "A database engine", "A storage tier", "A DNS zone"], "answer": 0}, {"q": "Which OCI service provides managed Kubernetes clusters?", "options": ["Container Engine for Kubernetes", "Object Storage", "Vault", "Block Volume"], "answer": 0}, {"q": "What is a container image?", "options": ["A packaged template used to create containers", "A network route", "An IAM user", "A database table"], "answer": 0}, {"q": "What is a container registry used for?", "options": ["Storing and managing container images", "Creating VCN routes", "Monitoring CPU only", "Managing database tables"], "answer": 0}]}, {"title": "Security", "questions": [{"q": "What is the purpose of cloud security controls?", "options": ["Protecting resources, identities, data, and workloads", "Increasing CPU frequency", "Creating object names", "Replacing databases"], "answer": 0}, {"q": "What does encryption help protect?", "options": ["Data confidentiality", "CPU cores", "DNS routes", "Subnet names"], "answer": 0}, {"q": "What does OCI Vault manage?", "options": ["Keys and secrets", "Compute shapes", "VCN subnets", "Object lifecycle rules"], "answer": 0}, {"q": "Why use multi-factor authentication?", "options": ["To add an additional verification factor", "To increase storage size", "To create containers", "To route traffic"], "answer": 0}, {"q": "Why should secrets not be hard-coded in source code?", "options": ["They can be exposed and reused by unauthorized parties", "They make VCNs smaller", "They reduce CPU memory", "They prevent DNS resolution"], "answer": 0}]}, {"title": "Monitoring", "questions": [{"q": "What is OCI Monitoring used for?", "options": ["Collecting and analyzing resource metrics", "Creating databases", "Managing passwords", "Uploading images"], "answer": 0}, {"q": "What is a metric?", "options": ["A numerical measurement of resource or application behavior", "A storage bucket", "A user account", "A subnet"], "answer": 0}, {"q": "What is an alarm?", "options": ["A rule that can trigger when metric conditions are met", "A compute shape", "An object name", "A database schema"], "answer": 0}, {"q": "Why use dashboards?", "options": ["To visualize important metrics and operational information", "To create IAM users", "To store objects", "To attach block volumes"], "answer": 0}, {"q": "What is logging used for?", "options": ["Collecting and analyzing log records", "Creating CPU shapes", "Creating VCNs", "Creating IAM users"], "answer": 0}]}];
+let student = {name:"",college:""};
+let currentActivity = 0, currentQuestion = 0, answers = [], currentScore = 0;
+
+function startLMS(){
+ const name=document.getElementById("studentName").value.trim(), college=document.getElementById("collegeName").value.trim();
+ if(!name||!college){alert("Please enter Student Name and College Name.");return;}
+ const previous=JSON.parse(localStorage.getItem("oracleLMSStudent")||"null");
+student={name,college};
+ localStorage.setItem("oracleLMSStudent",JSON.stringify(student));
+ document.getElementById("login").classList.add("hidden");
+ document.getElementById("dashboard").classList.remove("hidden");
+ document.getElementById("studentHeader").textContent=name+" • "+college;
+ document.getElementById("welcome").textContent="Welcome, "+name+" | "+college;
+ renderActivities();
+}
+
+function getStudentKey(){
+ return "oracleLMSCompleted_" + btoa(unescape(encodeURIComponent(student.name.trim().toLowerCase()+"|"+student.college.trim().toLowerCase())))
+   .replace(/[^a-zA-Z0-9]/g,"").slice(0,120);
+}
+
+function getCompleted(){
+ return JSON.parse(localStorage.getItem(getStudentKey())||"{}");
+}
+
+function renderActivities(){
+ const box=document.getElementById("activities"); box.innerHTML="";
+ const completed=getCompleted();
+ activities.forEach((a,i)=>{
+   const done=completed[a.title];
+   box.innerHTML += `<div class="activity"><h3>Activity ${i+1}: ${a.title}</h3><p>5-question Oracle Cloud quiz.</p><p class="${done?'status':''}">${done?`Completed — ${done.score}/${done.total} (${done.percent}%)`:"Not completed"}</p><button onclick="startQuiz(${i})">${done?"Retake Quiz":"Start Quiz"}</button></div>`;
+ });
+ const count=Object.keys(completed).length, pct=Math.round(count/activities.length*100);
+ document.getElementById("overallBar").style.width=pct+"%";
+ document.getElementById("overallText").textContent=count+" of "+activities.length+" activities completed ("+pct+"%)";
+}
+
+function startQuiz(i){
+ currentActivity=i; currentQuestion=0; answers=[]; currentScore=0;
+ document.getElementById("dashboard").classList.add("hidden");
+ document.getElementById("result").classList.add("hidden");
+ document.getElementById("quiz").classList.remove("hidden");
+ showQuestion();
+}
+
+function showQuestion(){
+ const a=activities[currentActivity], q=a.questions[currentQuestion];
+ document.getElementById("activityTitle").textContent="Activity "+(currentActivity+1)+" — "+a.title+" | Question "+(currentQuestion+1)+" of "+a.questions.length;
+ document.getElementById("questionText").textContent=q.q;
+ document.getElementById("quizBar").style.width=((currentQuestion)/a.questions.length*100)+"%";
+ const box=document.getElementById("options"); box.innerHTML="";
+ q.options.forEach((o,i)=>box.innerHTML+=`<label class="option"><input type="radio" name="answer" value="${i}"> ${String.fromCharCode(65+i)}. ${o}</label>`);
+ document.getElementById("nextBtn").textContent=currentQuestion===a.questions.length-1?"Submit Quiz":"Next";
+}
+
+function nextQuestion(){
+ const selected=document.querySelector('input[name="answer"]:checked');
+ if(!selected){alert("Please select an answer.");return;}
+ answers[currentQuestion]=Number(selected.value);
+ if(answers[currentQuestion]===activities[currentActivity].questions[currentQuestion].answer) currentScore++;
+ if(currentQuestion<activities[currentActivity].questions.length-1){currentQuestion++;showQuestion();}else finishQuiz();
+}
+
+function finishQuiz(){
+ const a=activities[currentActivity], total=a.questions.length, percent=Math.round(currentScore/total*100);
+ const completed=getCompleted();
+ completed[a.title]={score:currentScore,total,percent};
+ localStorage.setItem(getStudentKey(),JSON.stringify(completed));
+ document.getElementById("quiz").classList.add("hidden");
+ document.getElementById("result").classList.remove("hidden");
+ document.getElementById("resultTitle").textContent=a.title+" — Result";
+ document.getElementById("score").textContent=currentScore+" / "+total;
+ document.getElementById("resultDetails").textContent="Percentage: "+percent+"%";
+ document.getElementById("saveStatus").textContent="Saving result to Google Sheet...";
+ saveResult(a.title,currentScore,total,percent);
+}
+
+async function saveResult(activity,score,total,percent){
+ const data={type:"quiz",studentName:student.name,collegeName:student.college,activity,score,total,percentage:percent,status:"Completed"};
+ try{
+   await fetch(SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(data)});
+   document.getElementById("saveStatus").textContent="Result submitted successfully.";
+ }catch(e){document.getElementById("saveStatus").textContent="Quiz completed. Google Sheet submission could not be confirmed.";}
+}
+
+function showUseCases(){
+ document.getElementById("dashboard").classList.add("hidden");
+ document.getElementById("quiz").classList.add("hidden");
+ document.getElementById("result").classList.add("hidden");
+ document.getElementById("usecases").classList.remove("hidden");
+}
+
+function backDashboard(){
+ document.getElementById("quiz").classList.add("hidden");
+ document.getElementById("result").classList.add("hidden");
+ document.getElementById("dashboard").classList.remove("hidden");
+ renderActivities();
+}
+
+window.addEventListener("load",()=>{
+ // Every student starts from the login screen.
+ // Progress is stored separately using Student Name + College Name.
+ document.getElementById("studentName").focus();
+});
+</script>
+</body>
+</html>
