@@ -29,7 +29,7 @@ button{border:0;border-radius:9px;padding:12px 18px;background:#4f46e5;color:whi
 .practical-btn:hover{background:#0d6258}
 
 @media(max-width:800px){.usecase-grid{grid-template-columns:1fr}}\n@media(max-width:600px){.top{padding:22px 15px}.card{padding:18px}}
-</style>
+.region-map-section{margin-top:24px}.region-map-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:16px;text-align:center}.region-map-card img{width:100%;max-width:1100px;height:auto;border-radius:10px;display:block;margin:0 auto 12px}.map-caption{color:#64748b;font-size:13px;margin:8px 0 14px}.muted{color:#64748b;line-height:1.6}</style>
 </head>
 <body>
 <header class="top"><div class="wrap"><h1>Oracle Cloud Learning Management System</h1><div id="studentHeader" class="small" style="color:#dbeafe"></div></div></header>
@@ -251,6 +251,15 @@ button{border:0;border-radius:9px;padding:12px 18px;background:#4f46e5;color:whi
 
 <section id="result" class="hidden">
 <div class="card result"><h2 id="resultTitle"></h2><div class="score" id="score"></div><p id="resultDetails"></p><p id="saveStatus" class="status"></p><button onclick="backDashboard()">Back to Dashboard</button></div>
+</section>
+<section class="card region-map-section">
+  <h2>🌍 Oracle Cloud Infrastructure — Worldwide Region Map</h2>
+  <p class="muted">Oracle Cloud Infrastructure (OCI) is hosted in globally distributed regions. A region is a localized geographic area, and availability domains are one or more data centers within a region.</p>
+  <div class="region-map-card">
+    <img src="https://www.oracle.com/a/ocom/img/rc115-ocimap-allregions.jpg" alt="Oracle Cloud Infrastructure worldwide region map">
+    <p class="map-caption">Oracle Cloud Infrastructure worldwide regions and data center locations.</p>
+    <a class="primary-btn" href="https://www.oracle.com/cloud/storage/" target="_blank" rel="noopener noreferrer">View Current Oracle Region Details</a>
+  </div>
 </section>
 </main>
 
