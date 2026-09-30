@@ -47,7 +47,7 @@ button{width:100%;padding:14px;border:0;border-radius:10px;background:#4f46e5;co
   </form>
 </div>
 <script>
-document.getElementById('activityForm').addEventListener('submit',function(e){
+document.getElementById('activityForm').addEventListener('submit',async function(e){
   e.preventDefault();
   const activities=[...document.querySelectorAll('input[name="activity"]:checked')];
   if(!activities.length){alert('Please select at least one activity.');return;}
