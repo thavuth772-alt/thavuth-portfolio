@@ -51,17 +51,38 @@ document.getElementById('activityForm').addEventListener('submit',function(e){
   e.preventDefault();
   const activities=[...document.querySelectorAll('input[name="activity"]:checked')];
   if(!activities.length){alert('Please select at least one activity.');return;}
-  const record={
-    timestamp:new Date().toLocaleString(),
-    studentName:document.getElementById('studentName').value.trim(),
-    collegeName:document.getElementById('collegeName').value.trim(),
-    activities:activities.map(x=>x.value)
+  const submitButton = this.querySelector('button[type="submit"]');
+  submitButton.disabled = true;
+  submitButton.textContent = 'Submitting...';
+
+  const payload = {
+    studentName: document.getElementById('studentName').value.trim(),
+    collegeName: document.getElementById('collegeName').value.trim(),
+    projectSubmission: activities.some(x => x.value === 'Project Submission') ? 'Yes' : 'No',
+    ociCertificate: activities.some(x => x.value === 'OCI Architect Associate Certificate Submission') ? 'Yes' : 'No',
+    grandQuiz: activities.some(x => x.value === 'Grand Quiz') ? 'Yes' : 'No'
   };
-  const data=JSON.parse(localStorage.getItem('studentActivitySubmissions')||'[]');
-  data.push(record);
-  localStorage.setItem('studentActivitySubmissions',JSON.stringify(data));
-  document.getElementById('message').style.display='block';
-  this.reset();
+
+  const scriptUrl = 'https://script.google.com/macros/s/AKfycbwfIM-gdXTOC5Gj6BV5WUnKLzVqhkb9SrJvIT_BEVzuMVh0mAlYxTfMOD0hhxQG9OK1ow/exec';
+
+  try {
+    const response = await fetch(scriptUrl, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {'Content-Type': 'text/plain;charset=utf-8'},
+      body: JSON.stringify(payload)
+    });
+
+    document.getElementById('message').textContent =
+      'Submission sent successfully. Thank you!';
+    document.getElementById('message').style.display = 'block';
+    this.reset();
+  } catch (error) {
+    alert('Submission failed. Please try again.');
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = 'Submit Activity';
+  }
 });
 </script>
 </body>
