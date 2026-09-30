@@ -24,7 +24,8 @@ button{width:100%;padding:14px;border:0;border-radius:10px;background:#4f46e5;co
     <h1>Student Activity Submission</h1>
     <p>Submit your student details and select the activities you have completed.</p>
   </div>
-  <form class="form" id="activityForm">
+  <iframe name="submitFrame" id="submitFrame" style="display:none;"></iframe>
+  <form class="form" id="activityForm" action="https://script.google.com/macros/s/AKfycbzEyWtr36naCHJb-gtcTUnySjlO7CGkBERlfejY4Lt8jMHTeFuPQxyIF5UcrjYH0Wx3-g/exec" method="POST" target="submitFrame" onsubmit="return prepareSubmission(this);">
     <div class="field">
       <label for="studentName">1. Student Name <span class="required">*</span></label>
       <input id="studentName" name="studentName" type="text" placeholder="Enter your full name" required>
@@ -36,54 +37,37 @@ button{width:100%;padding:14px;border:0;border-radius:10px;background:#4f46e5;co
     <div class="field">
       <label>3. Activities Completed <span class="required">*</span></label>
       <div class="options">
-        <label class="option"><input type="checkbox" name="activity" value="Project Submission"> Project Submission</label>
-        <label class="option"><input type="checkbox" name="activity" value="OCI Architect Associate Certificate Submission"> OCI Architect Associate Certificate Submission</label>
-        <label class="option"><input type="checkbox" name="activity" value="Grand Quiz"> Grand Quiz</label>
+        <label class="option"><input type="checkbox" name="projectSubmission" value="Yes"> Project Submission</label>
+        <label class="option"><input type="checkbox" name="ociCertificate" value="Yes"> OCI Architect Associate Certificate Submission</label>
+        <label class="option"><input type="checkbox" name="grandQuiz" value="Yes"> Grand Quiz</label>
       </div>
     </div>
-    <button type="submit">Submit Activity</button>
-    <div class="message" id="message">Details captured successfully on this device. Connect this form to Google Forms/Sheets to collect submissions centrally.</div>
+    <button type="submit" id="submitButton">Submit Activity</button>
+    <div class="message" id="message">Submission saved successfully. Thank you!</div>
     <p class="note">All fields marked with * are required. Students can select more than one activity.</p>
   </form>
 </div>
 <script>
-document.getElementById('activityForm').addEventListener('submit',async function(e){
-  e.preventDefault();
-  const activities=[...document.querySelectorAll('input[name="activity"]:checked')];
-  if(!activities.length){alert('Please select at least one activity.');return;}
-  const submitButton = this.querySelector('button[type="submit"]');
-  submitButton.disabled = true;
-  submitButton.textContent = 'Submitting...';
-
-  const payload = {
-    studentName: document.getElementById('studentName').value.trim(),
-    collegeName: document.getElementById('collegeName').value.trim(),
-    projectSubmission: activities.some(x => x.value === 'Project Submission') ? 'Yes' : 'No',
-    ociCertificate: activities.some(x => x.value === 'OCI Architect Associate Certificate Submission') ? 'Yes' : 'No',
-    grandQuiz: activities.some(x => x.value === 'Grand Quiz') ? 'Yes' : 'No'
-  };
-
-  const scriptUrl = 'https://script.google.com/macros/s/AKfycbwfIM-gdXTOC5Gj6BV5WUnKLzVqhkb9SrJvIT_BEVzuMVh0mAlYxTfMOD0hhxQG9OK1ow/exec';
-
-  try {
-    const response = await fetch(scriptUrl, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: {'Content-Type': 'text/plain;charset=utf-8'},
-      body: JSON.stringify(payload)
-    });
-
-    document.getElementById('message').textContent =
-      'Submission sent successfully. Thank you!';
-    document.getElementById('message').style.display = 'block';
-    this.reset();
-  } catch (error) {
-    alert('Submission failed. Please try again.');
-  } finally {
-    submitButton.disabled = false;
-    submitButton.textContent = 'Submit Activity';
+function prepareSubmission(form){
+  const activities = form.querySelectorAll('input[type="checkbox"]:checked');
+  if(activities.length === 0){
+    alert('Please select at least one activity.');
+    return false;
   }
-});
+
+  const button = document.getElementById('submitButton');
+  button.disabled = true;
+  button.textContent = 'Submitting...';
+
+  setTimeout(function(){
+    document.getElementById('message').style.display = 'block';
+    form.reset();
+    button.disabled = false;
+    button.textContent = 'Submit Activity';
+  }, 800);
+
+  return true;
+}
 </script>
 </body>
 </html>
