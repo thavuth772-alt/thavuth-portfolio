@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College Admission Portal | UI/UX Project</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Campus<span>Flow</span></div>
+    <nav>
+      <a href="#overview">Overview</a>
+      <a href="#application">Application</a>
+      <a href="#features">Features</a>
+    </nav>
+    <button class="login-btn">Student Login</button>
+  </header>
+
+  <main>
+    <section class="hero" id="overview">
+      <div>
+        <p class="eyebrow">COLLEGE ADMISSION PORTAL</p>
+        <h1>Apply to your dream college with confidence.</h1>
+        <p class="hero-text">A clean, student-friendly admission experience designed to simplify applications, document submission and application tracking.</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#application">Start Application</a>
+          <a class="secondary-btn" href="#features">Explore Features</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="card-head">
+          <span>Application Progress</span><strong>60%</strong>
+        </div>
+        <div class="progress"><span></span></div>
+        <div class="step done">✓ Personal Information</div>
+        <div class="step done">✓ Academic Details</div>
+        <div class="step active">3&nbsp;&nbsp; Documents</div>
+        <div class="step">4&nbsp;&nbsp; Review & Submit</div>
+      </div>
+    </section>
+
+    <section class="section" id="application">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">APPLICATION WORKFLOW</p>
+          <h2>Complete your application</h2>
+        </div>
+        <span class="status">● Draft saved</span>
+      </div>
+
+      <div class="form-layout">
+        <aside class="sidebar">
+          <div class="side-item active"><b>1</b> Personal Information</div>
+          <div class="side-item"><b>2</b> Academic Details</div>
+          <div class="side-item"><b>3</b> Documents</div>
+          <div class="side-item"><b>4</b> Review & Submit</div>
+        </aside>
+
+        <div class="form-card">
+          <h3>Personal Information</h3>
+          <p class="muted">Enter your basic details to continue your application.</p>
+          <form id="admissionForm">
+            <div class="grid">
+              <label>First Name<input required type="text" placeholder="Enter first name"></label>
+              <label>Last Name<input required type="text" placeholder="Enter last name"></label>
+              <label>Email Address<input required type="email" placeholder="student@example.com"></label>
+              <label>Phone Number<input required type="tel" placeholder="+91 98765 43210"></label>
+              <label class="full">Preferred Programme
+                <select required>
+                  <option value="">Select programme</option>
+                  <option>B.Sc. Computer Science</option>
+                  <option>BCA</option>
+                  <option>B.Com</option>
+                  <option>BBA</option>
+                </select>
+              </label>
+              <label class="full">Address<textarea rows="3" placeholder="Enter your address"></textarea></label>
+            </div>
+            <div class="form-footer">
+              <span class="muted">Your information is saved automatically.</span>
+              <button class="primary-btn" type="submit">Save & Continue →</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section features" id="features">
+      <p class="eyebrow">UI/UX FEATURES</p>
+      <h2>Designed around the student journey</h2>
+      <div class="feature-grid">
+        <article><div class="icon">01</div><h3>Guided Workflow</h3><p>Step-by-step navigation reduces confusion during the admission process.</p></article>
+        <article><div class="icon">02</div><h3>Progress Tracking</h3><p>Students can immediately understand what is completed and what remains.</p></article>
+        <article><div class="icon">03</div><h3>Responsive Design</h3><p>The interface adapts to desktops, tablets and mobile screens.</p></article>
+        <article><div class="icon">04</div><h3>Clear Feedback</h3><p>Status indicators and validation messages keep students informed.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer>College Admission Portal · UI/UX Practice Project</footer>
+  <script src="script.js"></script>
+</body>
+</html>
