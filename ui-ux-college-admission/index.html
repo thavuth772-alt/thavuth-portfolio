@@ -46,7 +46,7 @@
           <p class="eyebrow">APPLICATION WORKFLOW</p>
           <h2>Complete your application</h2>
         </div>
-        <span class="status">● Draft saved</span>
+        <span class="status" id="applicationStatus">● Draft saved</span>
       </div>
 
       <div class="form-layout">
@@ -62,12 +62,20 @@
           <p class="muted">Enter your basic details to continue your application.</p>
           <form id="admissionForm">
             <div class="grid">
-              <label>First Name<input required type="text" placeholder="Enter first name"></label>
-              <label>Last Name<input required type="text" placeholder="Enter last name"></label>
-              <label>Email Address<input required type="email" placeholder="student@example.com"></label>
-              <label>Phone Number<input required type="tel" placeholder="+91 98765 43210"></label>
+              <label>First Name
+                <input name="firstName" required type="text" placeholder="Enter first name">
+              </label>
+              <label>Last Name
+                <input name="lastName" required type="text" placeholder="Enter last name">
+              </label>
+              <label>Email Address
+                <input name="email" required type="email" placeholder="student@example.com">
+              </label>
+              <label>Phone Number
+                <input name="phone" required type="tel" placeholder="+91 98765 43210">
+              </label>
               <label class="full">Preferred Programme
-                <select required>
+                <select name="programme" required>
                   <option value="">Select programme</option>
                   <option>B.Sc. Computer Science</option>
                   <option>BCA</option>
@@ -75,7 +83,9 @@
                   <option>BBA</option>
                 </select>
               </label>
-              <label class="full">Address<textarea rows="3" placeholder="Enter your address"></textarea></label>
+              <label class="full">Address
+                <textarea name="address" rows="3" placeholder="Enter your address"></textarea>
+              </label>
             </div>
             <div class="form-footer">
               <span class="muted">Your information is saved automatically.</span>
