@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OCI Cloud Computing Use Cases</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#667085;--blue:#2563eb;--dark:#0f172a;--line:#e5e7eb;--green:#0f9d58}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text)}
+header{background:linear-gradient(135deg,#0b1f44,#155eef);color:white;padding:34px 20px}
+header .wrap,.container{max-width:1200px;margin:auto}
+h1{margin:0 0 8px;font-size:34px}header p{margin:0;opacity:.9}
+nav{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line);padding:12px 20px}
+.navwrap{max-width:1200px;margin:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+input{flex:1;min-width:220px;padding:12px 14px;border:1px solid #d0d5dd;border-radius:10px;font-size:15px}
+button,.link{border:0;background:var(--blue);color:white;padding:11px 15px;border-radius:9px;cursor:pointer;text-decoration:none;display:inline-block}
+button.secondary{background:#eef4ff;color:#174ea6}
+.container{padding:28px 20px}
+.hero{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;margin-bottom:24px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.stat{padding:16px;background:#f8fafc;border-radius:12px}.stat b{font-size:24px;display:block}.stat span{color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:20px;box-shadow:0 2px 8px rgba(15,23,42,.04)}
+.num{color:var(--blue);font-weight:800;font-size:13px}.card h2{margin:7px 0 10px;font-size:20px}.card p{color:var(--muted);line-height:1.55}.tags{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0}.tag{font-size:12px;padding:5px 8px;border-radius:999px;background:#eef4ff;color:#174ea6}
+.detail{display:none;margin-top:18px;border-top:1px solid var(--line);padding-top:18px}.detail.open{display:block}
+ol{padding-left:22px;line-height:1.7}.arch{background:#0f172a;color:#e2e8f0;padding:15px;border-radius:10px;overflow:auto;font-family:Consolas,monospace;font-size:13px;white-space:pre}
+footer{margin-top:40px;background:#0f172a;color:#cbd5e1;padding:28px 20px}.footerwrap{max-width:1200px;margin:auto}
+.small{font-size:13px;color:var(--muted)}a{color:#155eef}
+@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}h1{font-size:27px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>☁️ OCI Cloud Computing Use Cases</h1>
+<p>20 practical cloud computing use cases with step-by-step implementation guidance for Oracle Cloud Infrastructure.</p>
+</div></header>
+<nav><div class="navwrap">
+<input id="search" placeholder="Search use cases, OCI services or topics..." oninput="filterCards()">
+<button class="secondary" onclick="expandAll()">Expand All</button>
+<button class="secondary" onclick="collapseAll()">Collapse All</button>
+</div></nav>
+
+<main class="container">
+<section class="hero">
+<h2>Cloud Computing Practical Learning Hub</h2>
+<p>This learning website converts the 20 use cases in the supplied Cloud Computing Use Cases document into practical OCI-oriented lab guidance. Select any use case to see the objective, services, steps, architecture and suggested student output.</p>
+<div class="stats">
+<div class="stat"><b>20</b><span>Use Cases</span></div>
+<div class="stat"><b>OCI</b><span>Cloud Platform</span></div>
+<div class="stat"><b>Hands-on</b><span>Practical Focus</span></div>
+<div class="stat"><b>IAM → AI</b><span>Topics Covered</span></div>
+</div>
+</section>
+
+<div id="cards" class="grid"></div>
+</main>
+
+<footer><div class="footerwrap">
+<h3>Useful OCI Links</h3>
+<p><a href="https://cloud.oracle.com/" target="_blank">OCI Console</a> ·
+<a href="https://docs.oracle.com/en-us/iaas/Content/home.htm" target="_blank">OCI Documentation</a> ·
+<a href="https://www.oracle.com/cloud/free/" target="_blank">Oracle Cloud Free Tier</a> ·
+<a href="https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/launchinginstance.htm" target="_blank">Compute</a> ·
+<a href="https://docs.oracle.com/en-us/iaas/Content/Identity/" target="_blank">IAM</a> ·
+<a href="https://docs.oracle.com/en-us/iaas/Content/Balance/" target="_blank">Load Balancer</a>
+</p>
+<p class="small">Training reference site. Always check the OCI Console and official Oracle documentation for the current interface and service availability.</p>
+</div></footer>
+
+<script>
+const useCases=[
+["01","Startup Cloud Infrastructure Setup","Design a cost-effective cloud infrastructure for a new startup using appropriate service models.",["VCN","Compute","Object Storage","Database","IAM"],["Create a compartment named Startup-Project.","Create a VCN such as 10.0.0.0/16.","Create public and private subnets.","Launch an Oracle Linux Compute instance.","Create an Object Storage bucket for files.","Create a suitable database service.","Create IAM groups and least-privilege policies.","Configure monitoring and test the application."],"Users → Load Balancer → Compute → Database\n                         ↘ Object Storage"],
+["02","E-Commerce Website Cloud Deployment","Deploy a scalable e-commerce application using cloud hosting and storage services.",["VCN","Compute","Object Storage","Database","Load Balancer"],["Create an e-commerce VCN and subnets.","Launch the web/application server.","Install the required web stack.","Upload the HTML/CSS/JS application.","Create a database for products and orders.","Create Object Storage for product images.","Create a Load Balancer and add the backend server.","Open the public endpoint and test the website."],"Users → Load Balancer → Web Servers → Database\n                                      ↘ Object Storage"],
+["03","Cloud-Based Data Backup Solution","Design automated backup and disaster recovery strategy using cloud storage.",["Object Storage","Block Volume","Database Backup","Archive"],["Create a backup bucket.","Upload sample student/project files.","Organize files into logical folders.","Configure lifecycle/retention rules where required.","Create database or volume backups as applicable.","Store older data in archive storage.","Test restoring a deleted file or backup.","Document the recovery procedure."],"Application → Backup → Object Storage → Archive"],
+["04","Hybrid Cloud for Banking Sector","Create a hybrid cloud model for secure transaction processing and data storage.",["VCN","Private Subnet","VPN","Compute","Database","IAM"],["Create an OCI VCN with private resources.","Create a private subnet.","Deploy a sample transaction application.","Deploy a private database.","Configure IAM access control.","Plan VPN connectivity between on-premises and OCI.","Restrict database access to approved application resources.","Test the secure architecture using a lab simulation."],"On-Premises → VPN → OCI VCN → Private Application → Database"],
+["05","E-Government e-Governance Platform","Design a public cloud solution for citizen services with high availability.",["Compute","Load Balancer","Database","Object Storage","Monitoring"],["Create the VCN and subnets.","Deploy two web/application servers.","Deploy the citizen-service application.","Create the database.","Create a Load Balancer.","Add both servers as backends.","Configure health checks.","Test access and simulate one backend failure."],"Citizens → Load Balancer → Server 1 / Server 2 → Database"],
+["06","SaaS Application Hosting","Host and manage a SaaS-based CRM system using PaaS services.",["Compute","Database","Object Storage","IAM","Load Balancer"],["Create the application network.","Deploy a sample CRM application.","Create customer, lead and sales database tables.","Store documents in Object Storage.","Configure IAM roles.","Expose the application through a Load Balancer.","Create test users.","Test multi-user access."],"Users → CRM → Database\n             ↘ Object Storage"],
+["07","Cloud Cost Optimization Strategy","Analyze usage patterns and suggest cost control techniques in cloud environments.",["Cost Management","Budgets","Compute","Storage","Monitoring"],["Open the OCI Console cost/usage area.","Review Compute and storage usage.","Identify unused resources.","Check which resources are Always Free or potentially billable.","Stop or remove unnecessary lab resources.","Create a budget/alert where available.","Record usage before and after optimization.","Prepare a cost-optimization report."],"Usage → Analysis → Optimization → Budget Monitoring"],
+["08","Healthcare Data Management in Cloud","Design a secure cloud solution for storing and accessing patient records.",["IAM","Private Network","Database","Object Storage","Logging"],["Create a dedicated compartment.","Create private network resources.","Create a database for sample patient records.","Create Object Storage for documents.","Create IAM groups with least privilege.","Apply encryption/security controls.","Enable logging/monitoring as appropriate.","Test authorized and unauthorized access with fictional data only."],"Doctor → Application → IAM → Private Database / Storage"],
+["09","Cloud Migration Case Study","Plan migration of an on-premise ERP system to cloud infrastructure.",["Compute","Database","Object Storage","Migration Planning"],["Document the existing ERP architecture.","Identify application, database and storage dependencies.","Create the target OCI network.","Create target Compute and database resources.","Back up sample data to Object Storage.","Migrate the sample database/application.","Test functionality and performance.","Document cutover and rollback steps."],"On-Prem ERP → Assessment → Migration → OCI ERP"],
+["10","Multi-Region Cloud Deployment","Implement a globally distributed cloud architecture for high performance.",["OCI Regions","VCN","Compute","Database","DNS/Routing"],["Choose two suitable OCI regions.","Create a VCN in each region.","Deploy the application in both regions.","Plan database replication or synchronization.","Configure global traffic/routing strategy.","Test both endpoints.","Document the failover design.","Record region-specific resource dependencies."],"Users → Global Routing → Region 1\n                         ↘ Region 2"],
+["11","Identity & Access Management (IAM) Cloud Implementation","Design role-based access policies in a cloud environment.",["IAM","Users","Groups","Policies","Compartments"],["Create Admin, Developer and Viewer users/groups.","Create separate compartments for environments.","Add users to the appropriate groups.","Create least-privilege policies.","Test permissions with each role.","Verify that unauthorized operations are denied.","Document every policy statement and its purpose."],"Users → Groups → Policies → OCI Resources"],
+["12","Secure File Sharing System","Build a cloud-based file sharing system with encryption and access control.",["Object Storage","IAM","Encryption","Logging"],["Create a private/controlled Object Storage bucket.","Upload sample documents.","Create a file-sharing user/group.","Create the required IAM policy.","Test upload/download permissions.","Configure encryption/security settings as required.","Enable logging where appropriate.","Test an authorized and unauthorized account."],"User → IAM → Object Storage → Secure Files"],
+["13","Cloud-Based Learning Management System","Deploy an LMS platform for online education using scalable cloud services.",["Compute","Database","Object Storage","Load Balancer","IAM"],["Create the LMS VCN.","Deploy the LMS web application.","Create students, trainers, courses and attendance tables.","Create Object Storage for PDFs/videos/assignments.","Configure application-to-database connectivity.","Create a Load Balancer if multiple servers are used.","Test student and trainer workflows.","Document the complete LMS architecture."],"Students/Trainers → Load Balancer → LMS → Database\n                                      ↘ Object Storage"],
+["14","IoT Data Processing in Cloud","Design cloud architecture to handle IoT device data collection and analytics.",["Compute","Object Storage","Data Ingestion","Analytics"],["Create an OCI environment for the lab.","Use a Python program to simulate sensor devices.","Generate temperature, humidity and pressure data.","Send/store the sample data in the cloud.","Process the data.","Create charts or a dashboard.","Test continuous sample-data ingestion.","Document the IoT data flow."],"IoT Sensors → Ingestion → Cloud Storage → Processing → Dashboard"],
+["15","AI/ML Model Deployment on Cloud","Deploy a machine learning model using cloud computing resources.",["Compute","Python","FastAPI","OCI Data Science"],["Train a sample ML model locally or in a cloud notebook.","Save the model artifact.","Create a Compute instance or suitable ML environment.","Install Python dependencies.","Upload the model.","Create a FastAPI prediction endpoint.","Start the API server.","Test predictions from a browser/Postman/frontend."],"Dataset → Model → Deployment → API → User"],
+["16","Disaster Recovery Planning","Create a disaster recovery plan using multi-zone cloud infrastructure.",["Backup","Compute","Database","Monitoring"],["Identify critical application components.","Create a primary application environment.","Configure database and file backups.","Create a recovery environment/strategy.","Define RTO and RPO for the scenario.","Simulate application failure.","Restore the application/data.","Record recovery time and results."],"Primary → Backup → Recovery Environment"],
+["17","Cloud Security Risk Assessment","Identify potential vulnerabilities in cloud architecture and propose countermeasures.",["IAM","VCN","NSG/Security Lists","Logging","Monitoring"],["Review IAM users, groups and policies.","Check public/private network exposure.","Review open ports.","Check storage access configuration.","Review database exposure.","Enable/review logs and monitoring.","List each risk and its impact.","Propose and test a corresponding countermeasure."],"Architecture → Security Review → Risks → Controls → Verification"],
+["18","Compliance and Data Privacy Analysis","Evaluate cloud deployment against GDPR or local data protection regulations.",["Data Classification","IAM","Encryption","Logging","Governance"],["Identify data collected by the application.","Classify personal and sensitive information.","Identify where data is stored.","Review access controls.","Review encryption and logging.","Review retention and deletion requirements.","Check applicable region/data-residency considerations.","Prepare a compliance-gap report and proposed controls."],"Data → Classification → Controls → Evidence → Compliance Report"],
+["19","Public vs Private Cloud Comparison Study","Analyze use cases where private cloud is preferred over public cloud.",["Public Cloud","Private Cloud","Security","Cost","Scalability"],["Design a simple public-cloud architecture.","Design a simple private-cloud architecture.","Compare control and management responsibility.","Compare scalability and cost considerations.","Compare security and connectivity requirements.","Identify scenario-specific requirements.","Document findings without assuming one model fits every workload."],"Public Cloud ↔ Comparison ↔ Private Cloud"],
+["20","Capstone: Complete Cloud Architecture Design","Design an end-to-end cloud solution including service model selection, deployment type, security, cost estimation and scalability planning.",["VCN","Compute","Load Balancer","Database","Object Storage","IAM","Monitoring"],["Gather application requirements.","Choose the service/deployment model.","Create a compartment and VCN.","Create public/private network design.","Deploy application Compute resources.","Create database and Object Storage.","Add Load Balancer where required.","Configure IAM and security controls.","Plan monitoring, backup and disaster recovery.","Estimate costs and scalability.","Test the complete solution.","Prepare the final architecture report."],"Users → Load Balancer → Compute → Database\n                              ↘ Object Storage\n                         IAM + Monitoring + Backup"]
+];
+
+function render(){
+ const root=document.getElementById("cards");
+ root.innerHTML=useCases.map((u,i)=>`
+ <article class="card" data-search="${(u[1]+' '+u[2]+' '+u[3].join(' ')).toLowerCase()}">
+  <div class="num">USE CASE ${u[0]}</div>
+  <h2>${u[1]}</h2>
+  <p>${u[2]}</p>
+  <div class="tags">${u[3].map(x=>`<span class="tag">${x}</span>`).join('')}</div>
+  <button onclick="toggle(${i})">View Step-by-Step</button>
+  <div class="detail" id="d${i}">
+   <h3>Implementation Steps</h3>
+   <ol>${u[4].map(x=>`<li>${x}</li>`).join('')}</ol>
+   <h3>Architecture</h3>
+   <div class="arch">${u[5]}</div>
+   <p><b>Useful OCI links:</b> <a href="https://cloud.oracle.com/" target="_blank">OCI Console</a> · <a href="https://docs.oracle.com/en-us/iaas/Content/home.htm" target="_blank">Documentation</a></p>
+  </div>
+ </article>`).join('');
+}
+function toggle(i){document.getElementById('d'+i).classList.toggle('open')}
+function expandAll(){document.querySelectorAll('.detail').forEach(x=>x.classList.add('open'))}
+function collapseAll(){document.querySelectorAll('.detail').forEach(x=>x.classList.remove('open'))}
+function filterCards(){
+ const q=document.getElementById('search').value.toLowerCase().trim();
+ document.querySelectorAll('.card').forEach(c=>c.style.display=c.dataset.search.includes(q)?'block':'none');
+}
+render();
+</script>
+</body>
+</html>
