@@ -1,0 +1,1 @@
+const form=document.getElementById("admissionForm");form.addEventListener("submit",e=>{e.preventDefault();const button=form.querySelector("button");button.textContent="Saved ✓";button.disabled=true;button.style.opacity=".75";setTimeout(()=>{button.textContent="Save & Continue →";button.disabled=false;button.style.opacity="1"},1800)});
