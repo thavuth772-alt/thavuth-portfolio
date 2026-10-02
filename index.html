@@ -8,355 +8,64 @@
 
 <style>
 :root{
-  --bg:#07111f;
-  --bg2:#0b1930;
-  --card:#10233d;
-  --text:#f5f8ff;
-  --muted:#aab9d0;
-  --primary:#20a4ff;
-  --secondary:#7c5cff;
-  --accent:#22d3a6;
-  --white:#fff;
-  --border:rgba(255,255,255,.1);
-  --shadow:0 20px 50px rgba(0,0,0,.25);
+  --bg:#07111f;--bg2:#0b1930;--card:#10233d;--text:#f5f8ff;--muted:#aab9d0;
+  --primary:#20a4ff;--secondary:#7c5cff;--accent:#22d3a6;--white:#fff;
+  --border:rgba(255,255,255,.1);--shadow:0 20px 50px rgba(0,0,0,.25)
 }
 *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
-body{
-  font-family:Inter,Segoe UI,Arial,sans-serif;
-  background:#f6f9fd;color:#132238;line-height:1.6;
-}
-a{text-decoration:none;color:inherit}
-.container{width:min(1120px,92%);margin:auto}
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:1000;
-  background:rgba(7,17,31,.88);backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--border)
-}
-.navbar{height:72px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:25px;font-weight:800;color:white}.logo span{color:var(--primary)}
-.nav-links{display:flex;gap:25px;list-style:none}
-.nav-links a{color:#dbe7f7;font-size:14px;font-weight:600;transition:.25s}
-.nav-links a:hover{color:#45b8ff}
+body{font-family:Inter,Segoe UI,Arial,sans-serif;background:#f6f9fd;color:#132238;line-height:1.6}
+a{text-decoration:none;color:inherit}.container{width:min(1120px,92%);margin:auto}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(7,17,31,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.navbar{height:72px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:25px;font-weight:800;color:white}.logo span{color:var(--primary)}
+.nav-links{display:flex;gap:25px;list-style:none}.nav-links a{color:#dbe7f7;font-size:14px;font-weight:600;transition:.25s}.nav-links a:hover{color:#45b8ff}
 .menu{display:none;color:white;font-size:28px;cursor:pointer}
-
-.hero{
-  min-height:760px;padding-top:72px;display:flex;align-items:center;
-  color:white;overflow:hidden;position:relative;
-  background:
-    radial-gradient(circle at 75% 35%,rgba(80,71,255,.35),transparent 28%),
-    radial-gradient(circle at 15% 20%,rgba(0,164,255,.25),transparent 30%),
-    linear-gradient(135deg,#061326,#10275a 55%,#15104a);
-}
-.hero:before{
- content:"";position:absolute;inset:0;opacity:.12;
- background-image:linear-gradient(rgba(255,255,255,.15) 1px,transparent 1px),
- linear-gradient(90deg,rgba(255,255,255,.15) 1px,transparent 1px);
- background-size:45px 45px;
-}
-.hero-grid{position:relative;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:30px}
-.hello{font-size:18px;color:#8bd4ff;font-weight:600}
-.hero h1{font-size:clamp(48px,7vw,82px);line-height:1.02;margin:8px 0}
-.hero h2{font-size:28px;color:#fff;margin-bottom:10px}
-.hero p{color:#c8d6ea;max-width:650px;font-size:17px}
-.tags{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}
-.tag{padding:7px 13px;border:1px solid rgba(255,255,255,.17);border-radius:30px;background:rgba(255,255,255,.07);font-size:13px}
-.buttons{display:flex;gap:14px;margin-top:25px;flex-wrap:wrap}
-.btn{padding:13px 22px;border-radius:9px;font-weight:700;border:1px solid transparent;transition:.25s}
-.btn-primary{background:linear-gradient(90deg,var(--primary),#4775ff);color:white}
-.btn-outline{border-color:#5bbcff;color:white}
-.btn:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(32,164,255,.2)}
-
-.profile{
- display:flex;justify-content:center;align-items:center
-}
-.profile-card{
- width:min(380px,90%);padding:20px;border:1px solid rgba(255,255,255,.15);
- border-radius:28px;background:rgba(255,255,255,.07);backdrop-filter:blur(12px);
- box-shadow:var(--shadow);position:relative
-}
-.profile-photo{
- height:420px;border-radius:20px;display:flex;align-items:center;justify-content:center;
- background:linear-gradient(145deg,#173967,#0b1b32);overflow:hidden;
-}
-.profile-photo .initial{
- font-size:130px;font-weight:900;color:rgba(255,255,255,.12)
-}
-.profile-label{padding:15px 5px 0;text-align:center}
-.profile-label strong{font-size:21px}.profile-label small{color:#a9bdd8;display:block}
-
-section{padding:85px 0}
-.section-title{text-align:center;margin-bottom:45px}
-.section-title span{color:#178ce5}
-.section-title h2{font-size:38px;margin-bottom:8px}
-.section-title p{color:#66758b}
-
-.about-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:30px;align-items:stretch}
-.about-text,.highlight{
- background:white;border:1px solid #e3ebf4;border-radius:18px;padding:30px;box-shadow:0 10px 30px rgba(28,56,90,.06)
-}
-.about-text p{color:#52647b;margin-bottom:18px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:25px}
-.stat{padding:18px;background:#f5f9ff;border-radius:12px;text-align:center}
-.stat strong{display:block;font-size:25px;color:#138ce7}.stat span{font-size:12px;color:#66758b}
-.highlight{background:linear-gradient(145deg,#edf8ff,#f2f0ff)}
-.highlight-item{display:flex;gap:15px;margin-bottom:20px}
-.icon{min-width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:#dff2ff;color:#087ed0;font-weight:800}
-.highlight h4{margin-bottom:2px}.highlight p{font-size:13px;color:#6b7a8d}
-
-.skills{background:#f0f5fb}
-.skill-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:15px}
-.skill-card{
- background:white;border:1px solid #dfe8f3;border-radius:16px;padding:22px;
- transition:.3s
-}
-.skill-card:hover{transform:translateY(-6px);box-shadow:0 15px 30px rgba(24,74,120,.1)}
-.skill-card h3{font-size:16px;margin:10px 0}.skill-card p{font-size:13px;color:#69788b}
-.skill-icon{font-size:30px}
-
-.experience{background:var(--bg);color:white}
-.experience-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
-.dark-card{background:#0d2039;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:28px}
-.dark-card h3{margin-bottom:4px}.company{color:#55bbff;font-size:14px}
-.date{color:#9aabc1;font-size:13px;margin-bottom:18px}
-.list{list-style:none}.list li{margin:10px 0;color:#bdcce0;font-size:14px}.list li:before{content:"✓";color:#27d4a3;font-weight:bold;margin-right:9px}
-
-.domain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:20px}
-.domain{padding:17px;background:#132b49;border:1px solid rgba(255,255,255,.08);border-radius:12px}
-.domain strong{display:block}.domain small{color:#9fb1c8}
-
-.cert-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
-.cert{
- padding:22px;border-radius:15px;border:1px solid #e2eaf3;background:white;
- box-shadow:0 8px 25px rgba(30,60,90,.05)
-}
-.cert strong{display:block;margin:8px 0 3px}.cert small{color:#718097}
-
-.projects{background:#f0f5fb}
-.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.project{
- background:white;border-radius:18px;overflow:hidden;border:1px solid #dfe8f2;
- transition:.3s
-}
-.project:hover{transform:translateY(-6px);box-shadow:0 18px 35px rgba(25,63,100,.1)}
-.project-top{height:145px;display:grid;place-items:center;font-size:48px;color:white;background:linear-gradient(135deg,#087ed0,#684cff)}
-.project:nth-child(2) .project-top{background:linear-gradient(135deg,#5739dd,#b13bff)}
-.project:nth-child(3) .project-top{background:linear-gradient(135deg,#078c79,#1ebd91)}
-.project:nth-child(4) .project-top{background:linear-gradient(135deg,#e36c21,#f0b429)}
-.project:nth-child(5) .project-top{background:linear-gradient(135deg,#d23b65,#ff6d91)}
-.project:nth-child(6) .project-top{background:linear-gradient(135deg,#244f9c,#1a9bea)}
-.project-body{padding:22px}.project-body p{font-size:13px;color:#69788b;margin:8px 0 14px}
-.project-tags{display:flex;gap:7px;flex-wrap:wrap}.project-tags span{font-size:11px;background:#edf5ff;color:#1675b9;padding:4px 8px;border-radius:20px}
-
-.contact{background:linear-gradient(135deg,#071426,#112d54);color:white}
-.contact-box{text-align:center;max-width:780px;margin:auto}
-.contact-box p{color:#b9c9dc;margin:15px auto 25px}
-.contact-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-.contact-link{padding:12px 18px;border:1px solid rgba(255,255,255,.17);border-radius:10px;background:rgba(255,255,255,.05)}
-footer{background:#050d18;color:#8393aa;text-align:center;padding:22px;font-size:13px}
-
-.reveal{opacity:0;transform:translateY(25px);transition:.7s}.reveal.show{opacity:1;transform:none}
-
-@media(max-width:900px){
- .hero-grid,.about-grid,.experience-grid{grid-template-columns:1fr}
- .profile{order:-1}
- .profile-card{width:300px}.profile-photo{height:300px}
- .skill-grid{grid-template-columns:repeat(2,1fr)}
- .cert-grid{grid-template-columns:repeat(2,1fr)}
- .project-grid{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:650px){
- .nav-links{
-  display:none;position:absolute;top:72px;left:0;right:0;background:#07111f;
-  flex-direction:column;padding:20px 6%;gap:18px
- }
- .nav-links.open{display:flex}.menu{display:block}
- .hero{min-height:auto;padding:130px 0 70px}
- .hero h1{font-size:52px}.hero h2{font-size:23px}
- .stats{grid-template-columns:repeat(2,1fr)}
- .skill-grid,.cert-grid,.project-grid,.domain-grid{grid-template-columns:1fr}
- section{padding:65px 0}
-}
+.hero{min-height:760px;padding-top:72px;display:flex;align-items:center;color:white;overflow:hidden;position:relative;background:radial-gradient(circle at 75% 35%,rgba(80,71,255,.35),transparent 28%),radial-gradient(circle at 15% 20%,rgba(0,164,255,.25),transparent 30%),linear-gradient(135deg,#061326,#10275a 55%,#15104a)}
+.hero:before{content:"";position:absolute;inset:0;opacity:.12;background-image:linear-gradient(rgba(255,255,255,.15) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.15) 1px,transparent 1px);background-size:45px 45px}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:30px}.hello{font-size:18px;color:#8bd4ff;font-weight:600}
+.hero h1{font-size:clamp(48px,7vw,82px);line-height:1.02;margin:8px 0}.hero h2{font-size:28px;color:#fff;margin-bottom:10px}.hero p{color:#c8d6ea;max-width:650px;font-size:17px}
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}.tag{padding:7px 13px;border:1px solid rgba(255,255,255,.17);border-radius:30px;background:rgba(255,255,255,.07);font-size:13px}
+.buttons{display:flex;gap:14px;margin-top:25px;flex-wrap:wrap}.btn{padding:13px 22px;border-radius:9px;font-weight:700;border:1px solid transparent;transition:.25s}.btn-primary{background:linear-gradient(90deg,var(--primary),#4775ff);color:white}.btn-outline{border-color:#5bbcff;color:white}.btn:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(32,164,255,.2)}
+.profile{display:flex;justify-content:center;align-items:center}.profile-card{width:min(380px,90%);padding:20px;border:1px solid rgba(255,255,255,.15);border-radius:28px;background:rgba(255,255,255,.07);backdrop-filter:blur(12px);box-shadow:var(--shadow);position:relative}
+.profile-photo{height:420px;border-radius:20px;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#173967,#0b1b32);overflow:hidden}
+.profile-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}.profile-label{padding:15px 5px 0;text-align:center}.profile-label strong{font-size:21px}.profile-label small{color:#a9bdd8;display:block}
+section{padding:85px 0}.section-title{text-align:center;margin-bottom:45px}.section-title span{color:#178ce5}.section-title h2{font-size:38px;margin-bottom:8px}.section-title p{color:#66758b}
+.about-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:30px;align-items:stretch}.about-text,.highlight{background:white;border:1px solid #e3ebf4;border-radius:18px;padding:30px;box-shadow:0 10px 30px rgba(28,56,90,.06)}
+.about-text p{color:#52647b;margin-bottom:18px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:25px}.stat{padding:18px;background:#f5f9ff;border-radius:12px;text-align:center}.stat strong{display:block;font-size:25px;color:#138ce7}.stat span{font-size:12px;color:#66758b}
+.highlight{background:linear-gradient(145deg,#edf8ff,#f2f0ff)}.highlight-item{display:flex;gap:15px;margin-bottom:20px}.icon{min-width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:#dff2ff;color:#087ed0;font-weight:800}.highlight h4{margin-bottom:2px}.highlight p{font-size:13px;color:#6b7a8d}
+.skills{background:#f0f5fb}.skill-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:15px}.skill-card{background:white;border:1px solid #dfe8f3;border-radius:16px;padding:22px;transition:.3s}.skill-card:hover{transform:translateY(-6px);box-shadow:0 15px 30px rgba(24,74,120,.1)}.skill-card h3{font-size:16px;margin:10px 0}.skill-card p{font-size:13px;color:#69788b}.skill-icon{font-size:30px}
+.experience{background:var(--bg);color:white}.experience-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}.dark-card{background:#0d2039;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:28px}.dark-card h3{margin-bottom:4px}.company{color:#55bbff;font-size:14px}.date{color:#9aabc1;font-size:13px;margin-bottom:18px}.list{list-style:none}.list li{margin:10px 0;color:#bdcce0;font-size:14px}.list li:before{content:"✓";color:#27d4a3;font-weight:bold;margin-right:9px}
+.domain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:20px}.domain{padding:17px;background:#132b49;border:1px solid rgba(255,255,255,.08);border-radius:12px}.domain strong{display:block}.domain small{color:#9fb1c8}
+.cert-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.cert{padding:22px;border-radius:15px;border:1px solid #e2eaf3;background:white;box-shadow:0 8px 25px rgba(30,60,90,.05)}.cert strong{display:block;margin:8px 0 3px}.cert small{color:#718097}
+.projects{background:#f0f5fb}.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.project{background:white;border-radius:18px;overflow:hidden;border:1px solid #dfe8f2;transition:.3s}.project:hover{transform:translateY(-6px);box-shadow:0 18px 35px rgba(25,63,100,.1)}
+.project-top{height:145px;display:grid;place-items:center;font-size:48px;color:white;background:linear-gradient(135deg,#087ed0,#684cff)}.project:nth-child(2) .project-top{background:linear-gradient(135deg,#5739dd,#b13bff)}.project:nth-child(3) .project-top{background:linear-gradient(135deg,#078c79,#1ebd91)}.project:nth-child(4) .project-top{background:linear-gradient(135deg,#e36c21,#f0b429)}.project:nth-child(5) .project-top{background:linear-gradient(135deg,#d23b65,#ff6d91)}.project:nth-child(6) .project-top{background:linear-gradient(135deg,#244f9c,#1a9bea)}
+.project-body{padding:22px}.project-body p{font-size:13px;color:#69788b;margin:8px 0 14px}.project-tags{display:flex;gap:7px;flex-wrap:wrap}.project-tags span{font-size:11px;background:#edf5ff;color:#1675b9;padding:4px 8px;border-radius:20px}
+.contact{background:linear-gradient(135deg,#071426,#112d54);color:white}.contact-box{text-align:center;max-width:780px;margin:auto}.contact-box p{color:#b9c9dc;margin:15px auto 25px}.contact-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.contact-link{padding:12px 18px;border:1px solid rgba(255,255,255,.17);border-radius:10px;background:rgba(255,255,255,.05)}
+footer{background:#050d18;color:#8393aa;text-align:center;padding:22px;font-size:13px}.reveal{opacity:0;transform:translateY(25px);transition:.7s}.reveal.show{opacity:1;transform:none}
+@media(max-width:900px){.hero-grid,.about-grid,.experience-grid{grid-template-columns:1fr}.profile{order:-1}.profile-card{width:300px}.profile-photo{height:300px}.skill-grid{grid-template-columns:repeat(2,1fr)}.cert-grid{grid-template-columns:repeat(2,1fr)}.project-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:650px){.nav-links{display:none;position:absolute;top:72px;left:0;right:0;background:#07111f;flex-direction:column;padding:20px 6%;gap:18px}.nav-links.open{display:flex}.menu{display:block}.hero{min-height:auto;padding:130px 0 70px}.hero h1{font-size:52px}.hero h2{font-size:23px}.stats{grid-template-columns:repeat(2,1fr)}.skill-grid,.cert-grid,.project-grid,.domain-grid{grid-template-columns:1fr}section{padding:65px 0}}
 </style>
 </head>
-
 <body>
+<nav><div class="container navbar"><a href="#home" class="logo"><span>T</span>havuth</a><div class="menu" id="menu">☰</div><ul class="nav-links" id="navLinks"><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#experience">Experience</a></li><li><a href="#projects">Projects</a></li><li><a href="#certifications">Certifications</a></li><li><a href="#contact">Contact</a></li></ul></div></nav>
 
-<nav>
- <div class="container navbar">
-  <a href="#home" class="logo"><span>T</span>havuth</a>
-  <div class="menu" id="menu">☰</div>
-  <ul class="nav-links" id="navLinks">
-   <li><a href="#home">Home</a></li>
-   <li><a href="#about">About</a></li>
-   <li><a href="#skills">Skills</a></li>
-   <li><a href="#experience">Experience</a></li>
-   <li><a href="#projects">Projects</a></li>
-   <li><a href="#certifications">Certifications</a></li>
-   <li><a href="#contact">Contact</a></li>
-  </ul>
- </div>
-</nav>
+<header class="hero" id="home"><div class="container hero-grid"><div><div class="hello">Hello! I'm</div><h1>Thavuth</h1><h2>Corporate Trainer</h2><p>Front-End Development | Cloud Computing | Data Science | Data Analytics & Visualization | Oracle APEX</p><div class="tags"><span class="tag">1000+ Students Trained</span><span class="tag">Hands-on Training</span><span class="tag">Industry-Relevant Skills</span></div><p>Passionate about teaching technology through practical examples, real-world applications, projects, cloud labs and application-based learning.</p><div class="buttons"><a class="btn btn-primary" href="#contact">✉ Contact Me</a><a class="btn btn-outline" href="#" onclick="downloadResume(event)">↓ Download Resume</a></div></div>
+<div class="profile"><div class="profile-card"><div class="profile-photo"><img src="profile.jpg" alt="Thavuth - Corporate Trainer"></div><div class="profile-label"><strong>Corporate Trainer</strong><small>Web • Cloud • Data • Oracle Technologies</small></div></div></div></div></header>
 
-<header class="hero" id="home">
- <div class="container hero-grid">
-  <div>
-   <div class="hello">Hello! I'm</div>
-   <h1>Thavuth</h1>
-   <h2>Corporate Trainer</h2>
-   <p>Front-End Development | Cloud Computing | Data Science | Data Analytics & Visualization | Oracle APEX</p>
-   <div class="tags">
-    <span class="tag">1000+ Students Trained</span>
-    <span class="tag">Hands-on Training</span>
-    <span class="tag">Industry-Relevant Skills</span>
-   </div>
-   <p>Passionate about teaching technology through practical examples, real-world applications, projects, cloud labs and application-based learning.</p>
-   <div class="buttons">
-    <a class="btn btn-primary" href="#contact">✉ Contact Me</a>
-    <a class="btn btn-outline" href="#" onclick="downloadResume(event)">↓ Download Resume</a>
-   </div>
-  </div>
+<section id="about"><div class="container reveal"><div class="section-title"><h2>About <span>Me</span></h2><p>Trainer focused on practical, application-oriented learning.</p></div><div class="about-grid"><div class="about-text"><p>I am a Corporate Trainer at Adroit Technologies Innovative Solutions Pvt Ltd, specializing in Front-End Development, Cloud Computing (OCI), Data Science, Data Analytics & Visualization, and Oracle APEX.</p><p>I simplify programming and data concepts for diverse learners through clear explanations, live demonstrations, hands-on labs, projects, use cases and real-world examples.</p><p>My training approach focuses on helping students move from concepts to implementation and develop industry-relevant technical skills.</p><div class="stats"><div class="stat"><strong>1000+</strong><span>Students Trained</span></div><div class="stat"><strong>20+</strong><span>Colleges & Universities</span></div><div class="stat"><strong>10+</strong><span>Technology Areas</span></div><div class="stat"><strong>50+</strong><span>Projects & Use Cases</span></div></div></div><div class="highlight"><div class="highlight-item"><div class="icon">◎</div><div><h4>Practical Learning</h4><p>Real-world examples and application-based demonstrations.</p></div></div><div class="highlight-item"><div class="icon">👥</div><div><h4>Student-Centric Approach</h4><p>Easy explanations designed for different learning levels.</p></div></div><div class="highlight-item"><div class="icon">🚀</div><div><h4>Hands-on Training</h4><p>Projects, cloud labs, coding activities and live demos.</p></div></div><div class="highlight-item"><div class="icon">↗</div><div><h4>Continuous Learning</h4><p>Keeping training aligned with current technologies.</p></div></div></div></div></div></section>
 
-  <div class="profile">
-   <div class="profile-card">
-    <div class="profile-photo"><div class="initial">T</div></div>
-    <div class="profile-label">
-     <strong>Corporate Trainer</strong>
-     <small>Web • Cloud • Data • Oracle Technologies</small>
-    </div>
-   </div>
-  </div>
- </div>
-</header>
+<section id="skills" class="skills"><div class="container reveal"><div class="section-title"><h2>Technical <span>Skills</span></h2><p>Technologies and tools used for development and training.</p></div><div class="skill-grid"><div class="skill-card"><div class="skill-icon">🌐</div><h3>Front-End Development</h3><p>HTML, CSS, JavaScript, React JS, Responsive Design, Vite, CRA, React Hooks, Router</p></div><div class="skill-card"><div class="skill-icon">⚙️</div><h3>Backend Development</h3><p>Node.js, Express.js, REST API, MongoDB, SQL, PL/SQL, Java, Spring, Maven</p></div><div class="skill-card"><div class="skill-icon">📊</div><h3>Data Science & Analytics</h3><p>Python, Jupyter Notebook, Pandas, Machine Learning, Power BI, Tableau, Matplotlib, Seaborn</p></div><div class="skill-card"><div class="skill-icon">☁️</div><h3>Cloud & DevOps</h3><p>Oracle Cloud OCI, Docker, Kubernetes, Minikube, Terraform, Git, GitHub Actions, Cloud Labs</p></div><div class="skill-card"><div class="skill-icon">🛠️</div><h3>Other Tools</h3><p>VS Code, Google Colab, Anaconda, Streamlit, FastAPI, Uvicorn, Oracle APEX, SQL Explorer</p></div></div></div></section>
 
-<section id="about">
- <div class="container reveal">
-  <div class="section-title"><h2>About <span>Me</span></h2><p>Trainer focused on practical, application-oriented learning.</p></div>
-  <div class="about-grid">
-   <div class="about-text">
-    <p>I am a Corporate Trainer at Adroit Technologies Innovative Solutions Pvt Ltd, specializing in Front-End Development, Cloud Computing (OCI), Data Science, Data Analytics & Visualization, and Oracle APEX.</p>
-    <p>I simplify programming and data concepts for diverse learners through clear explanations, live demonstrations, hands-on labs, projects, use cases and real-world examples.</p>
-    <p>My training approach focuses on helping students move from concepts to implementation and develop industry-relevant technical skills.</p>
-    <div class="stats">
-     <div class="stat"><strong>1000+</strong><span>Students Trained</span></div>
-     <div class="stat"><strong>20+</strong><span>Colleges & Universities</span></div>
-     <div class="stat"><strong>10+</strong><span>Technology Areas</span></div>
-     <div class="stat"><strong>50+</strong><span>Projects & Use Cases</span></div>
-    </div>
-   </div>
-   <div class="highlight">
-    <div class="highlight-item"><div class="icon">◎</div><div><h4>Practical Learning</h4><p>Real-world examples and application-based demonstrations.</p></div></div>
-    <div class="highlight-item"><div class="icon">👥</div><div><h4>Student-Centric Approach</h4><p>Easy explanations designed for different learning levels.</p></div></div>
-    <div class="highlight-item"><div class="icon">🚀</div><div><h4>Hands-on Training</h4><p>Projects, cloud labs, coding activities and live demos.</p></div></div>
-    <div class="highlight-item"><div class="icon">↗</div><div><h4>Continuous Learning</h4><p>Keeping training aligned with current technologies.</p></div></div>
-   </div>
-  </div>
- </div>
-</section>
+<section id="experience" class="experience"><div class="container reveal"><div class="section-title"><h2>Training & <span>Experience</span></h2><p style="color:#9fb1c8">Professional training and technical mentoring.</p></div><div class="experience-grid"><div class="dark-card"><h3>Corporate Trainer</h3><div class="company">Adroit Technologies Innovative Solutions Pvt Ltd</div><div class="date">Aug 2024 – Present</div><ul class="list"><li>Delivered training sessions for students and faculties.</li><li>Trained 1000+ students across Tamil Nadu.</li><li>Conducted sessions on Front-End, Cloud, Data Science and Oracle APEX.</li><li>Prepared practical use cases and project-based learning activities.</li><li>Coordinated Naan Mudhalvan program training across universities.</li><li>Mentored students for projects, hackathons and certifications.</li></ul></div><div class="dark-card"><h3>Training Domains</h3><div class="domain-grid"><div class="domain">💻 <strong>Front-End Technologies</strong><small>HTML, CSS, JavaScript, React</small></div><div class="domain">☁️ <strong>Cloud Computing</strong><small>Oracle Cloud (OCI)</small></div><div class="domain">📊 <strong>Data Science</strong><small>Python, ML, AI</small></div><div class="domain">📈 <strong>Data Analytics</strong><small>APEX, Power BI, Tableau</small></div><div class="domain">🗄️ <strong>Oracle APEX</strong><small>Application Development</small></div><div class="domain">🚀 <strong>Industry Use Cases</strong><small>Projects & Hackathons</small></div></div></div></div></div></section>
 
-<section id="skills" class="skills">
- <div class="container reveal">
-  <div class="section-title"><h2>Technical <span>Skills</span></h2><p>Technologies and tools used for development and training.</p></div>
-  <div class="skill-grid">
-   <div class="skill-card"><div class="skill-icon">🌐</div><h3>Front-End Development</h3><p>HTML, CSS, JavaScript, React JS, Responsive Design, Vite, CRA, React Hooks, Router</p></div>
-   <div class="skill-card"><div class="skill-icon">⚙️</div><h3>Backend Development</h3><p>Node.js, Express.js, REST API, MongoDB, SQL, PL/SQL, Java, Spring, Maven</p></div>
-   <div class="skill-card"><div class="skill-icon">📊</div><h3>Data Science & Analytics</h3><p>Python, Jupyter Notebook, Pandas, Machine Learning, Power BI, Tableau, Matplotlib, Seaborn</p></div>
-   <div class="skill-card"><div class="skill-icon">☁️</div><h3>Cloud & DevOps</h3><p>Oracle Cloud OCI, Docker, Kubernetes, Minikube, Terraform, Git, GitHub Actions, Cloud Labs</p></div>
-   <div class="skill-card"><div class="skill-icon">🛠️</div><h3>Other Tools</h3><p>VS Code, Google Colab, Anaconda, Streamlit, FastAPI, Uvicorn, Oracle APEX, SQL Explorer</p></div>
-  </div>
- </div>
-</section>
+<section id="certifications"><div class="container reveal"><div class="section-title"><h2><span>Certifications</span> & Learning</h2><p>Selected cloud, AI and data learning achievements.</p></div><div class="cert-grid"><div class="cert">🔴<strong>OCI Foundation Associate</strong><small>Oracle Cloud Infrastructure</small></div><div class="cert">🤖<strong>OCI Generative AI</strong><small>Learning Path</small></div><div class="cert">🌱<strong>OCI Data Science</strong><small>Professional 2025</small></div><div class="cert">🧠<strong>Oracle AI Foundation</strong><small>AI learning</small></div><div class="cert">🗃️<strong>Oracle APEX</strong><small>Workspace & SQL Explorer</small></div></div></div></section>
 
-<section id="experience" class="experience">
- <div class="container reveal">
-  <div class="section-title"><h2>Training & <span>Experience</span></h2><p style="color:#9fb1c8">Professional training and technical mentoring.</p></div>
-  <div class="experience-grid">
-   <div class="dark-card">
-    <h3>Corporate Trainer</h3>
-    <div class="company">Adroit Technologies Innovative Solutions Pvt Ltd</div>
-    <div class="date">Aug 2024 – Present</div>
-    <ul class="list">
-     <li>Delivered training sessions for students and faculties.</li>
-     <li>Trained 1000+ students across Tamil Nadu.</li>
-     <li>Conducted sessions on Front-End, Cloud, Data Science and Oracle APEX.</li>
-     <li>Prepared practical use cases and project-based learning activities.</li>
-     <li>Coordinated Naan Mudhalvan program training across universities.</li>
-     <li>Mentored students for projects, hackathons and certifications.</li>
-    </ul>
-   </div>
-   <div class="dark-card">
-    <h3>Training Domains</h3>
-    <div class="domain-grid">
-     <div class="domain">💻 <strong>Front-End Technologies</strong><small>HTML, CSS, JavaScript, React</small></div>
-     <div class="domain">☁️ <strong>Cloud Computing</strong><small>Oracle Cloud (OCI)</small></div>
-     <div class="domain">📊 <strong>Data Science</strong><small>Python, ML, AI</small></div>
-     <div class="domain">📈 <strong>Data Analytics</strong><small>APEX, Power BI, Tableau</small></div>
-     <div class="domain">🗄️ <strong>Oracle APEX</strong><small>Application Development</small></div>
-     <div class="domain">🚀 <strong>Industry Use Cases</strong><small>Projects & Hackathons</small></div>
-    </div>
-   </div>
-  </div>
- </div>
-</section>
+<section id="projects" class="projects"><div class="container reveal"><div class="section-title"><h2>Featured <span>Projects</span></h2><p>Application-based projects and practical use cases.</p></div><div class="project-grid"><article class="project"><div class="project-top">🏠</div><div class="project-body"><h3>House Price Prediction</h3><p>Machine learning application for predicting property prices from relevant features.</p><div class="project-tags"><span>Python</span><span>ML</span><span>Streamlit</span></div></div></article><article class="project"><div class="project-top">📰</div><div class="project-body"><h3>Fake News Detection</h3><p>NLP-based project demonstrating text preprocessing and classification.</p><div class="project-tags"><span>Python</span><span>NLP</span><span>ML</span></div></div></article><article class="project"><div class="project-top">📄</div><div class="project-body"><h3>Resume Screening</h3><p>NLP use case for processing resumes and identifying relevant information.</p><div class="project-tags"><span>Python</span><span>NLP</span><span>Data</span></div></div></article><article class="project"><div class="project-top">🛒</div><div class="project-body"><h3>E-Commerce Cart</h3><p>Interactive web application demonstrating products, cart management and totals.</p><div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div></div></article><article class="project"><div class="project-top">☁️</div><div class="project-body"><h3>Cloud Image Storage</h3><p>Cloud-based use case for uploading, organizing, retrieving and securing images.</p><div class="project-tags"><span>Cloud</span><span>Storage</span><span>Security</span></div></div></article><article class="project"><div class="project-top">⚛️</div><div class="project-body"><h3>React Productivity Dashboard</h3><p>Application-based React dashboard using components, state and dynamic data.</p><div class="project-tags"><span>React</span><span>Hooks</span><span>UI</span></div></div></article></div></div></section>
 
-<section id="certifications">
- <div class="container reveal">
-  <div class="section-title"><h2><span>Certifications</span> & Learning</h2><p>Selected cloud, AI and data learning achievements.</p></div>
-  <div class="cert-grid">
-   <div class="cert">🔴<strong>OCI Foundation Associate</strong><small>Oracle Cloud Infrastructure</small></div>
-   <div class="cert">🤖<strong>OCI Generative AI</strong><small>Learning Path</small></div>
-   <div class="cert">🌱<strong>OCI Data Science</strong><small>Professional 2025</small></div>
-   <div class="cert">🧠<strong>Oracle AI Foundation</strong><small>AI learning</small></div>
-   <div class="cert">🗃️<strong>Oracle APEX</strong><small>Workspace & SQL Explorer</small></div>
-  </div>
- </div>
-</section>
+<section id="contact" class="contact"><div class="container contact-box reveal"><div class="section-title"><h2>Let's <span>Connect</span></h2><p style="color:#aebed2">Interested in training, technical mentoring, projects or collaboration?</p></div><p>Feel free to connect with me for corporate training, student training programs, technical workshops, project mentoring and technology-focused learning.</p><div class="contact-links"><a class="contact-link" href="mailto:thavuth772@gmail.com?subject=Contact%20from%20Thavuth%20Portfolio">✉ Email</a><a class="contact-link" href="https://www.linkedin.com/in/thavuth-aj-308a7115a/" target="_blank" rel="noopener noreferrer">in LinkedIn</a><a class="contact-link" href="https://github.com/thavuth772-alt" target="_blank" rel="noopener noreferrer">◉ GitHub</a></div></div></section>
 
-<section id="projects" class="projects">
- <div class="container reveal">
-  <div class="section-title"><h2>Featured <span>Projects</span></h2><p>Application-based projects and practical use cases.</p></div>
-  <div class="project-grid">
-   <article class="project"><div class="project-top">🏠</div><div class="project-body"><h3>House Price Prediction</h3><p>Machine learning application for predicting property prices from relevant features.</p><div class="project-tags"><span>Python</span><span>ML</span><span>Streamlit</span></div></div></article>
-   <article class="project"><div class="project-top">📰</div><div class="project-body"><h3>Fake News Detection</h3><p>NLP-based project demonstrating text preprocessing and classification.</p><div class="project-tags"><span>Python</span><span>NLP</span><span>ML</span></div></div></article>
-   <article class="project"><div class="project-top">📄</div><div class="project-body"><h3>Resume Screening</h3><p>NLP use case for processing resumes and identifying relevant information.</p><div class="project-tags"><span>Python</span><span>NLP</span><span>Data</span></div></div></article>
-   <article class="project"><div class="project-top">🛒</div><div class="project-body"><h3>E-Commerce Cart</h3><p>Interactive web application demonstrating products, cart management and totals.</p><div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div></div></article>
-   <article class="project"><div class="project-top">☁️</div><div class="project-body"><h3>Cloud Image Storage</h3><p>Cloud-based use case for uploading, organizing, retrieving and securing images.</p><div class="project-tags"><span>Cloud</span><span>Storage</span><span>Security</span></div></div></article>
-   <article class="project"><div class="project-top">⚛️</div><div class="project-body"><h3>React Productivity Dashboard</h3><p>Application-based React dashboard using components, state and dynamic data.</p><div class="project-tags"><span>React</span><span>Hooks</span><span>UI</span></div></div></article>
-  </div>
- </div>
-</section>
-
-<section id="contact" class="contact">
- <div class="container contact-box reveal">
-  <div class="section-title"><h2>Let's <span>Connect</span></h2><p style="color:#aebed2">Interested in training, technical mentoring, projects or collaboration?</p></div>
-  <p>Feel free to connect with me for corporate training, student training programs, technical workshops, project mentoring and technology-focused learning.</p>
-  <div class="contact-links">
-   <a class="contact-link" href="mailto:thavuth772@gmail.com?subject=Contact%20from%20Thavuth%20Portfolio">✉ Email</a>
-   <a class="contact-link" href="https://www.linkedin.com/in/thavuth-aj-308a7115a/" target="_blank" rel="noopener noreferrer">in LinkedIn</a>
-   <a class="contact-link" href="https://github.com/thavuth772-alt" target="_blank" rel="noopener noreferrer">◉ GitHub</a>
-  </div>
- </div>
-</section>
-
-<footer>
- © 2026 Thavuth. All rights reserved. | Corporate Trainer
-</footer>
-
+<footer>© 2026 Thavuth. All rights reserved. | Corporate Trainer</footer>
 <script>
-const menu=document.getElementById("menu");
-const navLinks=document.getElementById("navLinks");
-menu.addEventListener("click",()=>navLinks.classList.toggle("open"));
-document.querySelectorAll(".nav-links a").forEach(a=>{
- a.addEventListener("click",()=>navLinks.classList.remove("open"));
-});
-const observer=new IntersectionObserver(entries=>{
- entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add("show")});
-},{threshold:.12});
-document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
-
-function downloadResume(e){
- e.preventDefault();
- alert("Replace this button's link with your actual resume PDF file.");
-}
+const menu=document.getElementById("menu"),navLinks=document.getElementById("navLinks");menu.addEventListener("click",()=>navLinks.classList.toggle("open"));document.querySelectorAll(".nav-links a").forEach(a=>a.addEventListener("click",()=>navLinks.classList.remove("open")));const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add("show")})},{threshold:.12});document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));function downloadResume(e){e.preventDefault();alert("Replace this button's link with your actual resume PDF file.");}
 </script>
 </body>
 </html>
